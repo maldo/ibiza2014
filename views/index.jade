@@ -1,0 +1,156 @@
+extends layout
+
+block customCSS
+  link(href='/css/landing.css', rel='stylesheet')
+
+block content
+  //Side Menu 
+  a#menu-toggle.btn.btn-success(href='/login') Login
+  //a.btn.btn-success.navbar-fixed-top.pull-right(href='/login') Login
+
+  //Full Page Image Header Area 
+  #top.header
+    .vert-text
+      h1 Ibiza
+      h3
+        em We
+          | Organize a trip,
+        em You
+          | Make it Better
+      a.btn.btn-default.btn-lg(href='#about') Find Out More
+
+  //Intro 
+  #about.intro
+    .container
+      .row
+        .col-md-6.col-md-offset-3.text-center
+          h2 ESN Barcelona
+          p.lead
+            | We rule the world.
+
+  //Services 
+  #services.services
+    .container
+      .row
+        .col-md-4.col-md-offset-4.text-center
+        h2 Our Services
+        hr
+      .row
+        .col-md-2.col-md-offset-2.text-center
+          .service-item
+            i.service-icon.fa.fa-anchor
+            h4 Barcelona to Ibiza
+            p
+              | We take a boat! but not a normal one, we take the party boat!! So we start partying all along :)
+        .col-md-2.text-center
+          .service-item
+            i.service-icon.fa.fa-building-o
+            h4 Apartments
+            p
+              | Apartments with pool, so you can from relax to party!
+        .col-md-2.text-center
+          .service-item
+            i.service-icon.fa.fa-glass
+            h4 Parties
+            p
+              | Impossible to get bored! We plan the most awesome parties ever!
+        .col-md-2.text-center
+          .service-item
+            i.service-icon.fa.fa-heart
+            h4 You
+            p
+              |  We organize the trip, you make it better!
+
+  //Callout 
+  .callout
+    .vert-text
+      h1 A Dramatic Text Area
+
+  //Portfolio 
+  #portfolio.portfolio
+    .container
+      .row
+        .col-md-4.col-md-offset-4.text-center
+          h2 Our Work
+          hr
+      .row
+        .col-md-4.col-md-offset-2.text-center
+          .portfolio-item
+            a(href='#')
+              img.img-portfolio.img-responsive(src='img/portfolio-1.jpg')
+            h4 Cityscape
+        .col-md-4.text-center
+          .portfolio-item
+            a(href='#')
+              img.img-portfolio.img-responsive(src='img/portfolio-2.jpg')
+            h4 Is That On Fire?
+      .row
+        .col-md-4.col-md-offset-2.text-center
+          .portfolio-item
+            a(href='#')
+              img.img-portfolio.img-responsive(src='img/portfolio-3.jpg')
+            h4 Stop Sign
+        .col-md-4.text-center
+          .portfolio-item
+            a(href='#')
+              img.img-portfolio.img-responsive(src='img/portfolio-4.jpg')
+            h4 Narrow Focus
+
+  //Call to Action 
+  .call-to-action
+    .container
+      .row
+        .col-md-6.col-md-offset-3.text-center
+          h3 Sign up, follow the steps and pack your luggage
+          a.btn.btn-lg.btn-primary(href='/sign') Sign up
+
+  //Map 
+  #contact.map
+    iframe(width='100%', height='100%', frameborder='0', scrolling='no', marginheight='0', marginwidth='0', src='https://www.google.com/maps/embed?pb=!1m5!3m3!1m2!1s0x1299476385093943%3A0x9064725cd8426d6!2sIbiza!5e0!3m2!1sen!2s!4v1390209135821&output=embed')
+    br
+    small
+      a(href='https://www.google.com/maps/embed?pb=!1m5!3m3!1m2!1s0x1299476385093943%3A0x9064725cd8426d6!2sIbiza!5e0!3m2!1sen!2s!4v1390209135821')
+
+  //Footer 
+  footer
+    .container
+      .row
+        .col-md-6.col-md-offset-3.text-center
+          ul.list-inline
+            li
+              i.fa.fa-facebook.fa-3x
+            li
+              i.fa.fa-twitter.fa-3x
+            li
+              i.fa.fa-dribbble.fa-3x
+            .top-scroll
+              a(href='#top')
+                i.fa.fa-circle-arrow-up.scroll.fa-4x
+              hr
+              p
+                | Done by 
+                a(href="http://esnbarcelona.org") ESN Barcelona 
+                | with 
+                i.fa.fa-heart
+
+
+  //JavaScript 
+  script(src='js/jquery-1.10.2.js')
+  script(src='js/bootstrap.js')
+
+  //Custom JavaScript for Smooth Scrolling 
+  script.
+    $(function() {
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+          if (target.length) {
+            $('html,body').animate({
+              scrollTop: target.offset().top
+            }, 1000);
+            return false;
+          }
+        }
+      });
+    });

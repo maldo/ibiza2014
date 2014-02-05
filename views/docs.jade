@@ -1,0 +1,51 @@
+extends layout
+
+block content
+	.navbar.navbar-default.navbar-static-top(role='navigation')
+		.container
+			.navbar-header
+				button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+					span.sr-only Toggle navigation
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				a.navbar-brand(href='#') Ibiza
+			.navbar-collapse.collapse
+				ul.nav.navbar-nav
+					li
+						a(href='/dashboard') Home
+					li.acive
+						a(href='/dashboard/info') Info 
+					li
+						a(href='/dashboard/docs') Docs
+				ul.nav.navbar-nav.navbar-right
+					li.active
+						a(href='') Log with #{user.email}
+
+	.container
+		h1 Documents
+		h4 We need this documents, because the appartment ask for them
+
+	.container
+		h2 Your documents
+		form.col-md-4(role='form', method='post', enctype='multipart/form-data' action='/dashboard/docs/seguro')
+			.form-group
+				label(for='fileSeguro') 
+					if user.fileSeguro
+						a(href='http://ibiza2014.esnbarcelona.org/#{user.fileSeguro}') Your Insurance
+					else
+						| Copy of your Insurance
+				input#fileSeguro(type='file', name='fileSeguro')
+				p.help-block Files (.pdf, .jpeg, .png) up to 2MB.
+			button.btn.btn-default(type='submit') Submit the Insurance
+
+		form.col-md-4(role='form', method='post', enctype='multipart/form-data' action='/dashboard/docs/policia')
+			.form-group
+				label(for='filePolicia') 
+					if user.filePolicia
+						a(href='http://ibiza2014.esnbarcelona.org/#{user.filePolicia}') Your Responsability
+					else
+						| Copy of your Responsability
+				input#filePolicia(type='file', name='filePolicia')
+				p.help-block Files (.pdf, .jpeg, .png) up to 2MB.
+			button.btn.btn-default(type='submit') Submit the Responsability paper

@@ -1,0 +1,49 @@
+extends layout
+
+block content
+	.navbar.navbar-default.navbar-static-top(role='navigation')
+		.container
+			.navbar-header
+				button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+					span.sr-only Toggle navigation
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				a.navbar-brand(href='/dashboard') Ibiza
+			.navbar-collapse.collapse
+				ul.nav.navbar-nav
+					li.active
+						a(href='/dashboard') Home
+					li
+						a(href='/dashboard/info') Info 
+					li
+						a(href='/dashboard/docs') Docs
+				ul.nav.navbar-nav.navbar-right
+					li.active
+						a(href='') Log with #{user.email}
+
+	.container
+		.jumbotron
+			h1 Follow steps
+			p
+				| In order to get an spot for Ibiza trip, you need to follow some steps, fullfill you 
+				a(href='/dashboard/info') information
+				|, upload a copy of your ID and esncard. Also for the appartment, you need to fullfill 
+				a(href='/dashboard/docs') some paperwork.
+			p Once you have complete these two steps, we will check your information and your docs, if everthing is OK, start packing, otherwise we will contact you.
+
+		.row
+			.col-md-4.col-md-offset-1
+				img.img-circle(data-src='holder.js/140x140', alt='140x140', src='', style='width: 140px; height: 140px;')
+				h2 Information
+				p
+					| We need some personal data to send them to the appartment.
+				p
+					a.btn.btn-default(href='/dashboard/info', role='button') View details »
+			.col-md-4.col-md-offset-1
+				img.img-circle(data-src='holder.js/140x140', alt='140x140', src='', style='width: 140px; height: 140px;')
+				h2 Documents
+				p
+					| Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+				p
+					a.btn.btn-default(href='/dashboard/docs', role='button') View details »

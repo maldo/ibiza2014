@@ -1,0 +1,324 @@
+extends layout
+
+block content
+	.navbar.navbar-default.navbar-static-top(role='navigation')
+		.container
+			.navbar-header
+				button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+					span.sr-only Toggle navigation
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				a.navbar-brand(href='#') Ibiza
+			.navbar-collapse.collapse
+				ul.nav.navbar-nav
+					li
+						a(href='/dashboard') Home
+					li.acive
+						a(href='/dashboard/info') Info 
+					li
+						a(href='/dashboard/docs') Docs
+				ul.nav.navbar-nav.navbar-right
+					li.active
+						a(href='') Log with #{user.email}
+
+	.container
+		h1 Information
+		h4 Please fullfill your information and upload a copy of your ID and you esncard
+
+		form.col-md-4(role='form', method='post', action='/dashboard/info')
+			.form-group
+				label(for='name') Name
+				input#name.form-control(type='text', name='name', placeholder='#{user.name}')
+			.form-group
+				label(for='lastname') Last Name
+				input#lastname.form-control(type='text', name='lastname' placeholder='#{user.lastname}')
+			.form-group
+				label(for='id') ID
+				input#id.form-control(type='text', name='id', placeholder='#{user.id}')
+			.form-group
+				label(for='nationality') Nationality
+				select#esncard.form-control(type='text', name='nationality')
+					option #{user.nationality}
+					option Afghan
+					option Albanian
+					option Algerian
+					option American
+					option American Samoan
+					option Andorran
+					option Angolan
+					option Anguillan
+					option Antarctican
+					option Antigua and Barbuda national
+					option Antillean
+					option Argentinian
+					option Armenian
+					option Aruban
+					option Australian
+					option Austrian
+					option Azerbaijani
+					option Bahamian
+					option Bahraini
+					option Bangladeshi
+					option Barbadian
+					option Basotho
+					option Belarusian
+					option Belgian
+					option Belizean
+					option Beninese
+					option Bermudian
+					option Bhutanese
+					option Bolivian
+					option Bosnia and Herzegovina national
+					option Botswanan
+					option Bouvet Island
+					option Brazilian
+					option British Indian Ocean Territory
+					option British Virgin Islander
+					option Briton
+					option Bruneian
+					option Bulgarian
+					option Burkinabe
+					option Burmese
+					option Burundian
+					option Cambodian
+					option Cameroonian
+					option Canadian
+					option Cape Verdean
+					option Caymanian
+					option Central African
+					option Chadian
+					option Chilean
+					option Chinese
+					option Christmas Islander
+					option Cocos Islander
+					option Colombian
+					option Comorian
+					option Congolese
+					option Congolese
+					option Cook Islander
+					option Costa Rican
+					option Croat
+					option Cuban
+					option Cypriot
+					option Czech
+					option Dane
+					option Djiboutian
+					option Dominican
+					option Dominican
+					option East Timorese
+					option Ecuadorian
+					option Egyptian
+					option Emirian
+					option Equatorial Guinean
+					option Eritrean
+					option Estonian
+					option Ethiopian
+					option Faeroese
+					option Falkland Islander
+					option Fiji Islander
+					option Filipino
+					option Finn
+					option French
+					option French Southern Territories
+					option Gabonese
+					option Gambian
+					option Georgian
+					option German
+					option Ghanaian
+					option Gibraltarian
+					option Greek
+					option Greenlander
+					option Grenadian
+					option Guadeloupean
+					option Guamanian
+					option Guatemalan
+					option Guianese
+					option Guinea-Bissau national
+					option Guinean
+					option Guyanese
+					option Haitian
+					option Heard Island and McDonald Islands
+					option Honduran
+					option Hong Kong Chinese
+					option Hungarian
+					option Icelander
+					option Indian
+					option Indonesian
+					option Iranian
+					option Iraqi
+					option Irish
+					option Israeli
+					option Italian
+					option Ivorian
+					option Jamaican
+					option Japanese
+					option Jordanian
+					option Kazakh
+					option Kenyan
+					option Kiribatian
+					option Kuwaiti
+					option Kyrgyz
+					option Lao
+					option Latvian
+					option Lebanese
+					option Liberian
+					option Libyan
+					option Liechtensteiner
+					option Lithuanian
+					option Luxembourger
+					option Macanese
+					option Macedonian
+					option Mahorais
+					option Malagasy
+					option Malawian
+					option Malaysian
+					option Maldivian
+					option Malian
+					option Maltese
+					option Marshallese
+					option Martinican
+					option Mauritanian
+					option Mauritian
+					option Mexican
+					option Micronesian
+					option Moldovan
+					option Monegasque
+					option Mongolian
+					option Montenegrian
+					option Montserratian
+					option Moroccan
+					option Mozambican
+					option Namibian
+					option Nauruan
+					option Nepalese
+					option Netherlander
+					option New Caledonian
+					option New Zealander
+					option Nicaraguan
+					option Nigerian
+					option Nigerien
+					option Niuean
+					option Norfolk Islander
+					option North Korean
+					option Northern Mariana Islander
+					option Norwegian
+					option Omani
+					option Pakistani
+					option Palauan
+					option Panamanian
+					option Papua New Guinean
+					option Paraguayan
+					option Peruvian
+					option Pitcairner
+					option Pole
+					option Polynesian
+					option Portuguese
+					option Puerto Rican
+					option Qatari
+					option Reunionese
+					option Romanian
+					option Russian
+					option Rwandan
+					option Sahrawi
+					option Saint Helenian
+					option Saint Kitts and Nevis national
+					option Saint Lucian
+					option Saint Pierre and Miquelon national
+					option Salvadorian
+					option Samoan
+					option San Marinese
+					option São Toméan
+					option Saudi Arabian
+					option Senegalese
+					option Serbian
+					option Seychellois
+					option Sierra Leonean
+					option Singaporean
+					option Slovak
+					option Slovene
+					option Solomon Islander
+					option Somali
+					option South African
+					option South Georgia and the South Sandwich Islands
+					option South Korean
+					option Spaniard
+					option Sri Lankan
+					option Sudanese
+					option Surinamer
+					option Svalbard and Jan Mayen
+					option Swazi
+					option Swede
+					option Swiss
+					option Syrian
+					option Taiwanese
+					option Tajik
+					option Tanzanian
+					option Thai
+					option Togolese
+					option Tokelauan
+					option Tongan
+					option Trinidad and Tobago national
+					option Tunisian
+					option Turk
+					option Turkmen
+					option Turks and Caicos Islander
+					option Tuvaluan
+					option Ugandan
+					option Ukrainian
+					option United States Minor Outlying Islands
+					option Uruguayan
+					option US Virgin Islander
+					option Uzbek
+					option Vanuatuan
+					option Vatican
+					option Venezuelan
+					option Vietnamese
+					option Vincentian
+					option Wallis and Futuna Islander
+					option Yemeni
+					option Zambian
+					option Zimbabwean
+					option Åland Islander
+			.form-group
+				label(for='esncard') ESN card number
+				input#esncard.form-control(type='text', name='esncard', placeholder='#{user.esncard}')
+			.form-group
+				label(for='gender') Gender
+				select#esncard.form-control(type='text', name='gender')
+					option #{user.gender}
+					option Male
+					option Female
+			.form-group
+				label(for='shirt') T-Shirt Size
+				select#esncard.form-control(type='text', name='shirt')
+					option #{user.shirt}
+					option S
+					option M
+					option L
+					option XL
+			button.btn.btn-default(type='submit') Submit Info
+
+	.container
+		h1 Your Documents
+		form.col-md-4(role='form', method='post', enctype='multipart/form-data' action='/dashboard/info/id')
+			.form-group
+				label(for='fileId') 
+					if user.fileId
+						a(href='http://ibiza2014.esnbarcelona.org/#{user.fileId}') Your ID
+					else
+						| Copy of your ID
+				input#fileId(type='file', name='fileId')
+				p.help-block Files (.pdf, .jpeg, .png) up to 2MB.
+			button.btn.btn-default(type='submit') Submit your ID
+
+		form.col-md-4(role='form', method='post', enctype='multipart/form-data' action='/dashboard/info/card')
+			.form-group
+				label(for='fileCard') 
+					if user.fileCard
+						a(href='http://ibiza2014.esnbarcelona.org/#{user.fileId}') Your Card
+					else
+						| Copy of your ESN Card
+				input#fileId(type='file', name='fileCard')
+				p.help-block Files (.pdf, .jpeg, .png) up to 2MB.
+			button.btn.btn-default(type='submit') Submit your ESN Card

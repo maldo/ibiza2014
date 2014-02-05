@@ -1,0 +1,16 @@
+extends layout
+
+block customCSS
+		link(href='css/sign.css', rel='stylesheet')
+
+block content
+	.container
+		form.form-signin.col-md-4.col-md-offset-4(role='form', method='post', action='/sign')
+			h2.form-signin-heading Please Sign up
+			input.form-control(type='text', name='email', placeholder='Email address', required='', autofocus='')
+			input.form-control(type='password', name='password', placeholder='Password', required='')
+			input.form-control(type='password', name='again', placeholder='Type Again the password', required='')
+			label.checkbox
+				input(name='terms', type='checkbox', value='terms', required='')
+				| Accept terms and conditions?
+			button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in
