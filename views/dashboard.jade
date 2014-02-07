@@ -24,26 +24,93 @@ block content
 
 	.container
 		.jumbotron
-			h1 Follow steps
+			h1 Things To Do!
 			p
-				| In order to get an spot for Ibiza trip, you need to follow some steps, fullfill you 
+				| In order to get an spot for Ibiza trip, you need to follow some steps, pay, fullfill you 
 				a(href='/dashboard/info') information
-				|, upload a copy of your ID and esncard. Also for the appartment, you need to fullfill 
+				|, upload a copy of your ID, esncard and a payment proof. Also for the appartment, you need to fullfill 
 				a(href='/dashboard/docs') some paperwork.
 			p Once you have complete these two steps, we will check your information and your docs, if everthing is OK, start packing, otherwise we will contact you.
 
 		.row
-			.col-md-4.col-md-offset-1
-				img.img-circle(data-src='holder.js/140x140', alt='140x140', src='', style='width: 140px; height: 140px;')
-				h2 Information
-				p
-					| We need some personal data to send them to the appartment.
-				p
-					a.btn.btn-default(href='/dashboard/info', role='button') View details »
-			.col-md-4.col-md-offset-1
-				img.img-circle(data-src='holder.js/140x140', alt='140x140', src='', style='width: 140px; height: 140px;')
-				h2 Documents
-				p
-					| Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-				p
-					a.btn.btn-default(href='/dashboard/docs', role='button') View details »
+			h2 State of happiness
+			.col-md-5.col-md-offset-1
+				i.fa.fa-info-circle.fa-5x
+				h3 Information
+				ul
+					if user.name === ''
+						li You need to upload your information - 
+							i.fa.fa-meh-o.fa-2x
+					else if user.errorData
+						li.text-danger There is something wrong, check your info again! - 
+							i.fa.fa-frown-o.fa-2x
+					else if !user.controlData
+						li.text-primary You have uploaded your info, we will check it!
+					else if user.controlData
+						li.text-success Your info is ok - 
+							i.fa.fa-smile-o.fa-2x
+
+					if user.fileId === ''
+						li You need to upload a copy of your ID - 
+							i.fa.fa-meh-o.fa-2x
+					else if user.errorId
+						li.text-danger There is something wrong, check your upload again! - 
+							i.fa.fa-frown-o.fa-2x
+					else if !user.controlId
+						li.text-primary You have uploaded your ID, we will check it!
+					else if user.controlId
+						li.text-success Your ID is ok - 
+							i.fa.fa-smile-o.fa-2x
+
+					if user.fileCard === ''
+						li You need to upload a copy of your ESN CARD - 
+							i.fa.fa-meh-o.fa-2x
+					else if user.errorCard
+						li.text-danger There is something wrong, check your upload again! - 
+							i.fa.fa-frown-o.fa-2x
+					else if !user.controlCard
+						li.text-primary You have uploaded your ESN CARD, we will check it!
+					else if user.controlCard
+						li.text-success Your ESN CARD is ok - 
+							i.fa.fa-smile-o.fa-2x
+
+			.col-md-5
+				i.fa.fa-file-text.fa-5x
+				h3 Documents
+				ul
+					if user.fileResponsable === ''
+						li You need to upload the Responsability exception - 
+							i.fa.fa-meh-o.fa-2x
+					else if user.errorResponsable
+						li.text-danger There is something wrong, check your upload again! - 
+							i.fa.fa-frown-o.fa-2x
+					else if !user.controlResponsable
+						li.text-primary You have uploaded the responsability, we will check it! 
+					else if user.controlResponsable
+						li.text-success Your responsability exception is ok - 
+							i.fa.fa-smile-o.fa-2x
+
+					if user.filePolicia === ''
+						li You need to upload the Appartment paper - 
+							i.fa.fa-meh-o.fa-2x
+					else if user.errorPolicia
+						li.text-danger There is something wrong, check your info again! - 
+							i.fa.fa-frown-o.fa-2x
+					else if !user.controlPolicia
+						li.text-primary You have uploaded the Appartment paper, we will check it! 
+					else if user.controlPolicia
+						li.text-success Your Appartment paper is ok - 
+							i.fa.fa-smile-o.fa-2x
+
+					if user.filePago === ''
+						li You need to upload the proof of payment - 
+							i.fa.fa-meh-o.fa-2x
+					else if user.errorPago
+						li.text-danger There is something wrong, check your upload again! - 
+							i.fa.fa-frown-o.fa-2x
+					else if !user.controlPago
+						li.text-primary You have uploaded your payment, we will check it! 
+					else if user.controlPago
+						li.text-success Your payment is ok - 
+							i.fa.fa-smile-o.fa-2x
+

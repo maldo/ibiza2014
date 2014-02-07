@@ -1,12 +1,19 @@
 extends layout
 
 block customCSS
-		link(href='css/sign.css', rel='stylesheet')
+		link(href='/css/sign.css', rel='stylesheet')
 
 block content
 	.container
+	if admin
+		form.form-signin.col-md-4.col-md-offset-4(role='form', method='post', action='/admin/login')
+			h2.form-signin-heading Log in
+			input.form-control(type='text', name='email', placeholder='Email address', required='', autofocus='')
+			input.form-control(type='password', name='password', placeholder='Password', required='')
+			button.btn.btn-lg.btn-primary.btn-block(type='submit') Login
+	else
 		form.form-signin.col-md-4.col-md-offset-4(role='form', method='post', action='/login')
-			h2.form-signin-heading Please Sign up
+			h2.form-signin-heading Log in
 			input.form-control(type='text', name='email', placeholder='Email address', required='', autofocus='')
 			input.form-control(type='password', name='password', placeholder='Password', required='')
 			button.btn.btn-lg.btn-primary.btn-block(type='submit') Login
