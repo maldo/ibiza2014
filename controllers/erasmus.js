@@ -6,8 +6,12 @@ var mkdirp = require('mkdirp');
 
 var _ = module.exports = {};
 
-_.index = function(req, res) {
+_.index = function (req, res) {
   res.render('index');
+};
+
+_.terms = function (req, res) {
+	res.render('terms');
 };
 
 _.getLogin = function (req, res) {
@@ -96,9 +100,9 @@ _.postInfo = function (req, res) {
   req.assert('name', 'Name cannot be blank').notEmpty();
   req.assert('lastname', 'Last name cannot be blank').notEmpty();
   req.assert('gender', 'Gender cannot be blank').notEmpty();
-  req.assert('id', 'ID cannot be blank').notEmpty();
+  req.assert('id', 'ID cannot be blank').notEmpty().isAlphanumeric();
   req.assert('nationality', 'Nationality cannot be blank').notEmpty();
-  req.assert('esncard', 'Esn card cannot be blank').notEmpty();
+  req.assert('esncard', 'Esn card cannot be blank').notEmpty().isAlphanumeric();
   req.assert('gender', 'Gender cannot be blank').notEmpty();
   req.assert('shirt', 'T-shirt cannot be blank').notEmpty();
 
@@ -133,48 +137,44 @@ _.postInfoDocs = function (req, res) {
   var doc = req.params.doc;
 
   var newFile;
-  var oldFile;
+  var oldFile = req.files.file.path;
+
+  if (req.files.file.size === 0) {
+		req.flash('error', 'You should upload some file');
+		return res.redirect('/dashboard/info');
+  }
+
+  var ext = path.extname(req.files.file.path);
+
+  if (ext !== '.pdf' && ext !== '.png' && ext !== '.jpg') {
+  	req.flash('error', 'File with invalid extension');
+  	return res.redirect('/dashboard/info');
+  }
+
   if (doc === 'card') {
-    var ext = path.extname(req.files.fileCard.path);
     newFile = 'docs/' + req.user.email + '/_ESNCARD' + ext;
-    oldFile = req.files.fileCard.path;
   } else if (doc === 'id') {
-    var ext = path.extname(req.files.fileId.path);
     newFile = 'docs/' + req.user.email + '/_ID' + ext;
-    oldFile = req.files.fileId.path;
   }
 
   fs.rename(oldFile, 'public/' + newFile, function (err) {
     if (err) throw err;
-    console.log(newFile);
-    if (doc === 'card') {
       // Erasmus.update({_id: req.user._id}, {public[fileCard] = newFile}, function (err){
       //   //if (err) return handleError(err);
       // });
-
-      Erasmus.findById(req.user._id, function (err, erasmus) {
+    Erasmus.findById(req.user._id, function (err, erasmus) {
+      if (err) return handleError(err);
+      
+      if (doc === 'card') {
+      	erasmus.public.fileCard = newFile;
+      } else if (doc === 'id') {
+      	erasmus.public.fileId = newFile;
+      }
+      erasmus.save(function (err) {
         if (err) return handleError(err);
-        
-        erasmus.public.fileCard = newFile;
-        erasmus.save(function (err) {
-          if (err) return handleError(err);
-          return res.redirect('/dashboard/info');
-        });
+        return res.redirect('/dashboard/info');
       });
-    } else if (doc === 'id') {
-      //  Erasmus.update({_id: req.user._id}, {public[fileId] = newFile}, function (err){
-      //   //if (err) return handleError(err);
-      // });
-      Erasmus.findById(req.user._id, function (err, erasmus) {
-        if (err) return handleError(err);
-        
-        erasmus.public.fileId = newFile;
-        erasmus.save(function (err) {
-          if (err) return handleError(err);
-          return res.redirect('/dashboard/info');
-        });
-      });
-    }
+    });
   });
 };
 
@@ -184,41 +184,48 @@ _.getDocs = function (req, res) {
 _.postDocs = function (req, res) {
 	var doc = req.params.doc;
 
-  var newFile;
-  var oldFile;
-  if (doc === 'seguro') {
-    var ext = path.extname(req.files.fileSeguro.path);
-    newFile = 'docs/' + req.user.email + '/_SEGURO' + ext;
-    oldFile = req.files.fileSeguro.path;
+	var newFile;
+  var oldFile = req.files.file.path;
+
+  if (req.files.file.size === 0) {
+		req.flash('error', 'You should upload a file');
+		return res.redirect('/dashboard/docs');
+  }
+
+  var ext = path.extname(req.files.file.path);
+
+  if (ext !== '.pdf' && ext !== '.png' && ext !== '.jpg') {
+  	req.flash('error', 'File with invalid extension');
+  	return res.redirect('/dashboard/docs');
+  }
+
+  if (doc === 'responsable') {
+    newFile = 'docs/' + req.user.email + '/_RESPONSABILIDAD' + ext;
   } else if (doc === 'policia') {
-    var ext = path.extname(req.files.filePolicia.path);
     newFile = 'docs/' + req.user.email + '/_POLICIA' + ext;
-    oldFile = req.files.filePolicia.path;
+  } else if (doc === 'pago') {
+    newFile = 'docs/' + req.user.email + '/_PAGO' + ext;
   }
 
   fs.rename(oldFile, 'public/' + newFile, function (err) {
     if (err) throw err;
-    console.log(newFile);
-    if (doc === 'seguro') {
-      Erasmus.findById(req.user._id, function (err, erasmus) {
+      // Erasmus.update({_id: req.user._id}, {public[fileCard] = newFile}, function (err){
+      //   //if (err) return handleError(err);
+      // });
+    Erasmus.findById(req.user._id, function (err, erasmus) {
+      if (err) return handleError(err);
+      
+      if (doc === 'responsable') {
+      	erasmus.public.fileResponsable = newFile;
+      } else if (doc === 'policia') {
+      	erasmus.public.filePolicia = newFile;
+      } else if (doc === 'pago') {
+      	erasmus.public.filePago = newFile;
+      }
+      erasmus.save(function (err) {
         if (err) return handleError(err);
-        
-        erasmus.public.fileSeguro = newFile;
-        erasmus.save(function (err) {
-          if (err) return handleError(err);
-          return res.redirect('/dashboard/docs');
-        });
+        return res.redirect('/dashboard/docs');
       });
-    } else if (doc === 'policia') {
-      Erasmus.findById(req.user._id, function (err, erasmus) {
-        if (err) return handleError(err);
-        
-        erasmus.public.filePolicia = newFile;
-        erasmus.save(function (err) {
-          if (err) return handleError(err);
-          return res.redirect('/dashboard/docs');
-        });
-      });
-    }
+    });
   });
 };

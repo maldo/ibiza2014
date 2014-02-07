@@ -16,18 +16,29 @@ var erasmusSchema = new mongoose.Schema({
     gender: { type: String, default: '' },
     shirt: { type: String, default: '' },
     controlData: {type: Boolean, default: false},
+    errorData: {type: Boolean, default: false},
 
     fileCard: { type: String, default: '' },
     controlCard: {type: Boolean, default: false},
+    errorCard: {type: Boolean, default: false},
 
     fileId: { type: String, default: '' },
     controlId: {type: Boolean, default: false},
+    errorId: {type: Boolean, default: false},
 
-    fileSeguro: { type: String, default: '' },
-    controlSeguro: {type: Boolean, default: false},
+    fileResponsable: { type: String, default: '' },
+    controlResponsable: {type: Boolean, default: false},
+    errorResponsable: {type: Boolean, default: false},
 
     filePolicia: { type: String, default: '' },
-    controlPolicia: {type: Boolean, default: false}
+    controlPolicia: {type: Boolean, default: false},
+    errorPolicia: {type: Boolean, default: false},
+
+    filePago: { type: String, default: '' },
+    controlPago: {type: Boolean, default: false},
+    errorPago: {type: Boolean, default: false},
+
+    ok: {type: Boolean, default: false}
   }
 });
 

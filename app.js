@@ -71,6 +71,7 @@ app.use(express.errorHandler());
  */
 
 app.get('/', erasmus.index);
+app.get('/terms', erasmus.terms);
 app.get('/login', erasmus.getLogin);
 // app.post('/login', userController.postLogin);
 // app.get('/logout', userController.logout);
@@ -89,6 +90,9 @@ app.post('/dashboard/info/:doc', pc.isAuthenticated, multipartMiddleware, erasmu
 app.get('/dashboard/docs', pc.isAuthenticated, erasmus.getDocs);
 app.post('/dashboard/docs/:doc', pc.isAuthenticated, multipartMiddleware, erasmus.postDocs);
 
+app.get('/admin/login', admin.getLogin);
+app.post('/admin/login', admin.postLogin);
+app.get('/admin', admin.isAdmin, admin.getAdmin);
 
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
