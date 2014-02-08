@@ -53,10 +53,10 @@ block content
 		form.col-md-4(role='form', method='post', enctype='multipart/form-data' action='/dashboard/docs/pago')
 			.form-group
 				label(for='filePago') 
-					if user.filePolicia
+					if user.filePago
 						a(href='http://ibiza2014.esnbarcelona.org/#{user.filePago}') Your Payment proof
 					else
 						| Proof of payment
-				input#filePolicia(type='file', name='file')
+				input#filePago(type='file', name='file')
 				p.help-block Files (.pdf, .jpeg, .png) up to 2MB.
 			button.btn.btn-default(type='submit') Submit the Payment' proof
