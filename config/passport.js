@@ -17,7 +17,7 @@ passport.use(new LocalStrategy({
     passwordField: 'password'
   },function(username, password, done) {
   Erasmus.findOne({ email: username }, function(err, user) {
-    if (!user) return done(null, false, { message: 'Email ' + email + ' not found'});
+    if (!user) return done(null, false, { message: 'Email ' + username + ' not found'});
     user.comparePassword(password, function(err, isMatch) {
       if (isMatch) {
         return done(null, user);
