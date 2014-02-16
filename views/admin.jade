@@ -1,0 +1,73 @@
+extends layout
+
+block content
+	.navbar.navbar-default.navbar-static-top(role='navigation')
+		.container
+			.navbar-header
+				button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+					span.sr-only Toggle navigation
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				a.navbar-brand(href='/admin') Ibiza
+			.navbar-collapse.collapse
+				ul.nav.navbar-nav
+					li.active
+						a(href='/admin') Home
+				ul.nav.navbar-nav
+					li
+						a(href='/admin/data') Estadisticas
+
+	.container
+
+		table.table.table-hover
+			thead
+				tr
+					th Email
+					th Name
+					th Last Name
+					th Datos
+					th ID
+					th ESNCARD
+					th Policia
+					th Seguro
+					th Pago
+					th Valido
+			tbody
+				each erasmus in data
+					+row(erasmus.public.ok)
+						td 
+							a(href='/admin/#{erasmus.public.email}') #{erasmus.public.email}
+						td #{erasmus.public.name}
+						td #{erasmus.public.lastname}
+						+cell(erasmus.public.controlData)
+						+cell(erasmus.public.controlId)
+						+cell(erasmus.public.controlCard)
+						+cell(erasmus.public.controlResponsable)
+						+cell(erasmus.public.controlPolicia)
+						+cell(erasmus.public.controlPago)
+						+fin{erasmus.public.ok}
+					
+mixin row(ok)
+	if ok === true
+		tr.success
+			if block
+				block
+	else
+		tr
+			if block
+				block
+
+mixin cell(control)
+	if control === true
+		td.success 
+			i.fa.fa-smile-o.fa-2x
+	else
+		td.warning 
+			i.fa.fa-meh-o.fa-2x
+
+mixin fin(ok)
+	if ok === true
+		td.success Va!!
+	else
+		td.warning No Va!!

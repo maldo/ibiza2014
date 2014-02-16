@@ -20,8 +20,13 @@ _.getAdmin = function (req, res) {
 
 	Erasmus.find(function (err, docs) {
 		console.log(docs);
-		res.send(docs);
+		res.render('admin', {data: docs});
 	});
+};
 
-	//res.send('hola');
+_.getErasmus = function (req, res) {
+
+	Erasmus.find({ email: req.params.email}, function (err, doc) {
+		res.send(doc);
+	});
 };

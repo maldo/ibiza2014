@@ -94,6 +94,8 @@ app.get('/admin/login', admin.getLogin);
 app.post('/admin/login', admin.postLogin);
 app.get('/admin', admin.isAdmin, admin.getAdmin);
 
+app.get('/admin/:email', admin.isAdmin, admin.getErasmus)
+
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
