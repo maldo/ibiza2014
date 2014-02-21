@@ -306,7 +306,7 @@ block content
 			.form-group
 				label(for='fileId') 
 					if user.fileId
-						a(href='http://ibiza2014.esnbarcelona.org/#{user.fileId}') Your ID
+						a(href='/#{user.fileId}') Your ID
 					else
 						| Copy of your ID
 				input#fileId(type='file', name='file')
@@ -317,7 +317,7 @@ block content
 			.form-group
 				label(for='fileCard') 
 					if user.fileCard
-						a(href='http://ibiza2014.esnbarcelona.org/#{user.fileId}') Your Card
+						a(href='/#{user.fileCard}') Your Card
 					else
 						| Copy of your ESN Card
 				input#fileId(type='file', name='file')
