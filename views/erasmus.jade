@@ -1,0 +1,82 @@
+extends layout
+
+block content
+	.navbar.navbar-default.navbar-static-top(role='navigation')
+		.container
+			.navbar-header
+				button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+					span.sr-only Toggle navigation
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				a.navbar-brand(href='/admin') Ibiza
+			.navbar-collapse.collapse
+				ul.nav.navbar-nav
+					li
+						a(href='/admin') Home
+				ul.nav.navbar-nav
+					li
+						a(href='/admin/data') Estadisticas
+
+	.container
+		.row
+			h1 Datos
+			.col-md-3
+				h4 Info
+				p 
+					strong Nombre
+					|	#{erasmus.public.name}
+				p 
+					strong Apellido
+					|	#{erasmus.public.lastname}
+				p 
+					strong ID
+					|	#{erasmus.public.id}
+				p 
+					strong ESNcard
+					|	#{erasmus.public.esncard}
+				p 
+					strong Nacionalidad
+					|	#{erasmus.public.nationality}
+				p 
+					strong Camiseta
+					|	#{erasmus.public.shirt}
+				p 
+					strong Sexo (mucho)
+					|	#{erasmus.public.gender}
+			.col-md-4
+				h4 ID
+				a(href='/#{erasmus.public.fileId}')
+					strong Archivo ID
+					br
+				form(action='/admin/#{erasmus.email}/Id', method='post')
+					.form-group
+						label(for='controlCard')
+						select#id.form-control(type='text', name='ok')
+							if erasmus.public.controlId
+								option Ok
+							else
+								option Mal
+							option Ok
+							option Mal
+						br
+						textarea.form-control(type='text', name='msg', placeholder="#{erasmus.public.errorId}")
+					button.btn.btn-primary(type='submit') Set Id
+			.col-md-4
+				h4 ESNcard
+				a(href='/#{erasmus.public.fileCard}')
+					strong Archivo Card
+					br
+				form(action='/admin/#{erasmus.email}/Card', method='post')
+					.form-group
+						label(for='controlCard')
+						select#esncard.form-control(type='text', name='ok')
+							if erasmus.public.controlCard
+								option Ok
+							else
+								option Mal
+							option Ok
+							option Mal
+						br
+						textarea.form-control(type='text', name='msg', placeholder="#{erasmus.public.errorCard}")
+					button.btn.btn-primary(type='submit') Set Card
