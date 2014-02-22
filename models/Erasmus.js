@@ -20,23 +20,23 @@ var erasmusSchema = new mongoose.Schema({
 
     fileCard: { type: String, default: '' },
     controlCard: {type: Boolean, default: false},
-    errorCard: {type: Boolean, default: false},
+    errorCard: { type: String, default: '' },
 
     fileId: { type: String, default: '' },
     controlId: {type: Boolean, default: false},
-    errorId: {type: Boolean, default: false},
+    errorId: { type: String, default: '' },
 
     fileResponsable: { type: String, default: '' },
     controlResponsable: {type: Boolean, default: false},
-    errorResponsable: {type: Boolean, default: false},
+    errorResponsable: { type: String, default: '' },
 
     filePolicia: { type: String, default: '' },
     controlPolicia: {type: Boolean, default: false},
-    errorPolicia: {type: Boolean, default: false},
+    errorPolicia: { type: String, default: '' },
 
     filePago: { type: String, default: '' },
     controlPago: {type: Boolean, default: false},
-    errorPago: {type: Boolean, default: false},
+    errorPago: { type: String, default: '' },
 
     ok: {type: Boolean, default: false}
   }
