@@ -25,8 +25,38 @@ _.getAdmin = function (req, res) {
 };
 
 _.getErasmus = function (req, res) {
-
-	Erasmus.find({ email: req.params.email}, function (err, doc) {
-		res.send(doc);
+	Erasmus.findOne({ email: req.params.email}, function (err, doc) {
+		res.render('erasmus', {erasmus: doc});
 	});
+};
+
+_.getControl = function (req, res) {
+	var email = req.params.email;
+	var control = req.params.control;
+	var ok = req.body.ok;
+	var msg = req.body.msg;
+
+	console.log('control'+control)
+	ok = getBooleanOk(ok);
+
+	Erasmus.findOne({ email: req.params.email}, function (err, doc) {
+		if (ok) {
+			doc.public['control' + control] = true;
+			doc.public['error' + control] = 'Correcto';
+		} else {
+			doc.public['control' + control] = false;
+			doc.public['error' + control] = msg;
+			//enviar email
+		}
+		doc.save(function(err, doc) {
+			res.redirect('/admin/' + email);
+		});
+	});
+};
+
+var getBooleanOk = function (ok) {
+	if (ok === 'Ok')
+		return true;
+	else
+		return false;
 };
