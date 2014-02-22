@@ -53,7 +53,7 @@ block content
 					if user.fileId === ''
 						li You need to upload a copy of your ID - 
 							i.fa.fa-meh-o.fa-2x
-					else if user.errorId
+					else if user.errorId !== 'Correcto'
 						li.text-danger There is something wrong, check your upload again! - 
 							i.fa.fa-frown-o.fa-2x
 					else if !user.controlId
@@ -65,7 +65,7 @@ block content
 					if user.fileCard === ''
 						li You need to upload a copy of your ESN CARD - 
 							i.fa.fa-meh-o.fa-2x
-					else if user.errorCard
+					else if user.errorCard !== 'Correcto'
 						li.text-danger There is something wrong, check your upload again! - 
 							i.fa.fa-frown-o.fa-2x
 					else if !user.controlCard
@@ -81,7 +81,7 @@ block content
 					if user.fileResponsable === ''
 						li You need to upload the Responsability exception - 
 							i.fa.fa-meh-o.fa-2x
-					else if user.errorResponsable
+					else if user.errorResponsable !== 'Correcto'
 						li.text-danger There is something wrong, check your upload again! - 
 							i.fa.fa-frown-o.fa-2x
 					else if !user.controlResponsable
@@ -93,7 +93,7 @@ block content
 					if user.filePolicia === ''
 						li You need to upload the Appartment paper - 
 							i.fa.fa-meh-o.fa-2x
-					else if user.errorPolicia
+					else if user.errorPolicia !== 'Correcto'
 						li.text-danger There is something wrong, check your info again! - 
 							i.fa.fa-frown-o.fa-2x
 					else if !user.controlPolicia
@@ -105,7 +105,7 @@ block content
 					if user.filePago === ''
 						li You need to upload the proof of payment - 
 							i.fa.fa-meh-o.fa-2x
-					else if user.errorPago
+					else if user.errorPago !== 'Correcto'
 						li.text-danger There is something wrong, check your upload again! - 
 							i.fa.fa-frown-o.fa-2x
 					else if !user.controlPago
