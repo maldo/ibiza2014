@@ -1,8 +1,9 @@
 var Erasmus = require('../models/Erasmus');
-var fs = require('fs');
-var path = require('path');
-var passport = require('passport');
-var mkdirp = require('mkdirp');
+		fs = require('fs'),
+		path = require('path'),
+		passport = require('passport'),
+		mkdirp = require('mkdirp'),
+		mailing = require('../config/mailing');
 
 var _ = module.exports = {};
 
@@ -81,10 +82,27 @@ _.postSign = function (req, res) {
     req.logIn(user, function(err) {
       if (err) return next(err);
       mkdirp('public/docs/' + req.user.email, function(err) {
+      	sendMail(req.body.email, req.body.password);
 				return res.redirect('/dashboard');
       });
     });
   });
+};
+
+var sendMail = function (email, password) {
+	var mailOptions = {
+		from: 'ESN Barcelona <no-reply@esnbarcelona.org>',
+		to: email,
+		subject: '[ESN IBIZA] Welcome!',
+		text: 'Hello!!\n' +
+					'ESN barcelona wants to welcome you to the most exciting travel ever!\n' +
+					'Remenber your login is ' + email + ' with the following password ' + password + '\n\n' +
+					'You just need to fullfill some information and upload some files and you will be on board :)\n\n' +
+					'Have fun,\n' +
+					'ESN Barcelona Team'
+	};
+
+	mailing.sendMail(mailOptions);
 };
 
 _.getDashboard = function (req, res) {
@@ -229,3 +247,6 @@ _.postDocs = function (req, res) {
     });
   });
 };
+
+
+//api 90f5ee1384b930bb8d8ed6f0fa83898a-us3 
