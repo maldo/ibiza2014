@@ -123,6 +123,8 @@ _.postInfo = function (req, res) {
   req.assert('esncard', 'Esn card cannot be blank').notEmpty().isAlphanumeric();
   req.assert('gender', 'Gender cannot be blank').notEmpty();
   req.assert('shirt', 'T-shirt cannot be blank').notEmpty();
+  req.assert('ml', 'ML language cannot be blank').notEmpty();
+  req.assert('telefono', 'ML language cannot be blank').notEmpty();
 
   var errors = req.validationErrors();
 
@@ -143,6 +145,8 @@ _.postInfo = function (req, res) {
     erasmus.public.esncard = req.body.esncard;
     erasmus.public.gender = req.body.gender;
     erasmus.public.shirt = req.body.shirt;
+    erasmus.public.ml = req.body.ml;
+    erasmus.public.telefono = req.body.telefono;
     erasmus.save(function (err) {
       if (err) return handleError(err);
       return res.redirect('/dashboard/info');
@@ -247,6 +251,3 @@ _.postDocs = function (req, res) {
     });
   });
 };
-
-
-//api 90f5ee1384b930bb8d8ed6f0fa83898a-us3 

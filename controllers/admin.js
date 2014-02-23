@@ -20,7 +20,6 @@ _.postLogin = function (req, res) {
 _.getAdmin = function (req, res) {
 
 	Erasmus.find(function (err, docs) {
-		console.log(docs);
 		res.render('admin', {data: docs});
 	});
 };
@@ -31,9 +30,11 @@ _.getErasmus = function (req, res) {
 	});
 };
 
-_.getControl = function (req, res) {
-	var email = req.params.email;
+_.postControl = function (req, res) {
+
 	var control = req.params.control;
+	var email = req.params.email;
+
 	var ok = req.body.ok;
 	var msg = req.body.msg;
 
@@ -45,13 +46,40 @@ _.getControl = function (req, res) {
 			doc.public['error' + control] = 'Correcto';
 		} else {
 			doc.public['control' + control] = false;
-			doc.public['error' + control] = msg;
-			sendMail(email, msg);
+			doc.public['error' + control] = msg || 'Error con los datos, revisalos, por favor';
+			sendMail(email, '[ESN IBIZA] Review your files', msg);
 		}
 		doc.save(function(err, doc) {
-			res.redirect('/admin/' + email);
+			return res.redirect('/admin/' + email);
 		});
 	});
+};
+
+_.postTrip = function (req, res) {
+	var email = req.params.email;
+	Erasmus.findOne({ email: req.params.email}, function (err, doc) {
+		if (doc.public.controlData &&
+				doc.public.controlCard &&
+				doc.public.controlId &&
+				doc.public.controlResponsable &&
+				doc.public.controlPolicia &&
+				doc.public.controlPago)
+		{
+					doc.public.ok = true;
+					var msg = 'Estas dentro del viaje!!!\n Felicidades!!\n\n' +
+										'You are in!!!!\n Congrats!!';
+					sendMail(email, '[ESN IBIZA] Start Packing!!', msg);
+					var listId = getListId(doc.public.ml);
+					subscribe(email, listId);
+		}
+		doc.save(function(err, doc) {
+			return res.redirect('/admin/' + email);
+		});
+	});
+};
+
+_.getEstadisticas = function (req, res) {
+	res.redirect(301, 'https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 };
 
 var getBooleanOk = function (ok) {
@@ -61,13 +89,36 @@ var getBooleanOk = function (ok) {
 		return false;
 };
 
-var sendMail = function (email, msg) {
+var sendMail = function (email, title, msg) {
 	var mailOptions = {
 		from: "ESN Barcelona <no-reply@esnbarcelona.org>",
 		to: email,
-		subject: "[ESN IBIZA] Review your files",
+		subject: title,
 		text: msg
 	};
 
 	mailing.sendMail(mailOptions);
+};
+
+
+var subscribe = function (email, listId){
+  mc.lists.subscribe({id: listId, email:{email:email}}, function(data) {
+      console.log('User subscribed successfully! Look for the confirmation email.');
+    },
+    function(error) {
+      if (error.error) {
+        console.log(error.code + ": " + error.error);
+      } else {
+        console.log('There was an error subscribing that user');
+      }
+    });
+};
+
+var getListId = function (lang) {
+
+	if (lang === 'Spanish')
+		return 'cc32415e33';
+	else if (lang === 'English') {
+		return 'b2435a625b';
+	}
 };
