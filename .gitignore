@@ -22,3 +22,4 @@ Thumbs.db
 
 public/vendor
 public/docs
+config/secrets.js
