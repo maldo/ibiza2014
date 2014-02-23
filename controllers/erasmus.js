@@ -82,7 +82,10 @@ _.postSign = function (req, res) {
     req.logIn(user, function(err) {
       if (err) return next(err);
       mkdirp('public/docs/' + req.user.email, function(err) {
-      	sendMail(req.body.email, req.body.password);
+        if (err) {
+          return res.redirect('/sign');
+        };
+        sendMail(req.body.email, req.body.password);
 				return res.redirect('/dashboard');
       });
     });
