@@ -6,8 +6,10 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var expressValidator = require('express-validator');
 var multipart = require('connect-multiparty');
+var mcapi = require('mailchimp-api');
 
 
+var secret = require('./config/secrets');
 var erasmus = require('./controllers/erasmus');
 var admin = require('./controllers/admin');
 
@@ -26,6 +28,9 @@ mongoose.connect(secrets.db);
 mongoose.connection.on('error', function() {
   console.log('← MongoDB Connection Error →');
 });
+
+
+mc = new mcapi.Mailchimp(secrets.apiKey);
 
 var app = express();
 
@@ -94,8 +99,11 @@ app.get('/admin/login', admin.getLogin);
 app.post('/admin/login', admin.postLogin);
 app.get('/admin', admin.isAdmin, admin.getAdmin);
 
+app.get('/admin/estadisticas', admin.isAdmin, admin.getEstadisticas);
+
 app.get('/admin/:email', admin.isAdmin, admin.getErasmus);
-app.post('/admin/:email/:control', admin.isAdmin, admin.getControl);
+app.post('/admin/:email/ok', admin.isAdmin, admin.postTrip);
+app.post('/admin/:email/:control', admin.isAdmin, admin.postControl);
 
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
