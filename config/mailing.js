@@ -1,5 +1,5 @@
 var nodemailer = require('nodemailer');
-var config = require('.config');
+var shh = require('./secrets');
 
 var _ = module.exports = {};
 
@@ -7,7 +7,7 @@ var smtpTransport = nodemailer.createTransport('SMTP',{
 	service: 'Gmail',
 	auth: {
 		user: 'no-reply@esnbarcelona.org',
-		pass: config.mailpassword
+		pass: shh.mailpassword
 	}
 });
 
