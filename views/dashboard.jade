@@ -1,5 +1,8 @@
 extends layout
 
+block customCSS
+		link(href='/css/footer.css', rel='stylesheet')
+
 block content
 	.navbar.navbar-default.navbar-static-top(role='navigation')
 		.container
@@ -109,9 +112,9 @@ block content
 						li.text-success Your payment is ok - 
 							i.fa.fa-smile-o.fa-2x
 					else if user.errorPago !== ''
-						li.text-danger There is something wrong with the payment proof, check your upload again! - 
+						li.text-danger There is something wrong with the payment, check your upload again! - 
 							i.fa.fa-frown-o.fa-2x
 					else if !user.controlPago
 						li.text-primary You have uploaded your payment, we will check it! 
 					
-
+	include footer

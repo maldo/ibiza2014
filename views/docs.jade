@@ -1,5 +1,8 @@
 extends layout
 
+block customCSS
+		link(href='/css/footer.css', rel='stylesheet')
+
 block content
 	.navbar.navbar-default.navbar-static-top(role='navigation')
 		.container
@@ -60,3 +63,5 @@ block content
 				input#filePago(type='file', name='file')
 				p.help-block Files (.pdf, .jpeg, .png) up to 2MB.
 			button.btn.btn-default(type='submit') Submit the Payment' proof
+
+	include footer

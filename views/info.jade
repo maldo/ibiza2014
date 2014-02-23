@@ -1,5 +1,8 @@
 extends layout
 
+block customCSS
+		link(href='/css/footer.css', rel='stylesheet')
+
 block content
 	.navbar.navbar-default.navbar-static-top(role='navigation')
 		.container
@@ -284,6 +287,9 @@ block content
 				label(for='esncard') ESN card number
 				input#esncard.form-control(type='text', name='esncard', placeholder='#{user.esncard}')
 			.form-group
+				label(for='telefono') Phone number
+				input#esncard.form-control(type='text', name='telefono', placeholder='#{user.telefono}')
+			.form-group
 				label(for='gender') Gender
 				select#esncard.form-control(type='text', name='gender')
 					option #{user.gender}
@@ -298,6 +304,12 @@ block content
 					option L
 					option XL
 				p.text-primary We will try to keep your request
+			.form-group
+				label(for='ml') Mailing List Language
+				select#esncard.form-control(type='text', name='ml')
+					option #{user.ml}
+					option Spanish
+					option English
 			button.btn.btn-default(type='submit') Submit Info
 
 	.container
@@ -323,3 +335,5 @@ block content
 				input#fileId(type='file', name='file')
 				p.help-block Files (.pdf, .jpeg, .png) up to 2MB.
 			button.btn.btn-default(type='submit') Submit your ESN Card
+
+	include footer

@@ -1,5 +1,8 @@
 extends layout
 
+block customCSS
+		link(href='/css/footer.css', rel='stylesheet')
+
 block content
 	.navbar.navbar-default.navbar-static-top(role='navigation')
 		.container
@@ -16,7 +19,7 @@ block content
 						a(href='/admin') Home
 				ul.nav.navbar-nav
 					li
-						a(href='/admin/data') Estadisticas
+						a(href='/admin/estadisticas') Estadisticas
 
 	.container
 		table.table.table-hover
@@ -46,7 +49,9 @@ block content
 						+cell(erasmus.public.controlPolicia, erasmus.public.errorPolicia)
 						+cell(erasmus.public.controlPago, erasmus.public.errorPago)
 						+fin(erasmus.public.ok)
-					
+	
+	include footer
+
 mixin row(ok)
 	if ok === true
 		tr.success
