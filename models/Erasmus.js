@@ -16,7 +16,7 @@ var erasmusSchema = new mongoose.Schema({
     gender: { type: String, default: '' },
     shirt: { type: String, default: '' },
     controlData: {type: Boolean, default: false},
-    errorData: {type: Boolean, default: false},
+    errorData: { type: String, default: '' },
 
     fileCard: { type: String, default: '' },
     controlCard: {type: Boolean, default: false},
