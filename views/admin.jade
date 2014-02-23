@@ -28,8 +28,8 @@ block content
 					th Datos
 					th ID
 					th ESNCARD
+					th Responsabilidad
 					th Policia
-					th Seguro
 					th Pago
 					th Valido
 			tbody
@@ -39,13 +39,13 @@ block content
 							a(href='/admin/#{erasmus.public.email}') #{erasmus.public.email}
 						td #{erasmus.public.name}
 						td #{erasmus.public.lastname}
-						+cell(erasmus.public.controlData)
-						+cell(erasmus.public.controlId)
-						+cell(erasmus.public.controlCard)
-						+cell(erasmus.public.controlResponsable)
-						+cell(erasmus.public.controlPolicia)
-						+cell(erasmus.public.controlPago)
-						+fin{erasmus.public.ok}
+						+cell(erasmus.public.controlData, erasmus.public.errorData)
+						+cell(erasmus.public.controlId, erasmus.public.errorId)
+						+cell(erasmus.public.controlCard, erasmus.public.errorCard)
+						+cell(erasmus.public.controlResponsable, erasmus.public.errorResponsable)
+						+cell(erasmus.public.controlPolicia, erasmus.public.errorPolicia)
+						+cell(erasmus.public.controlPago, erasmus.public.errorPago)
+						+fin(erasmus.public.ok)
 					
 mixin row(ok)
 	if ok === true
@@ -57,11 +57,14 @@ mixin row(ok)
 			if block
 				block
 
-mixin cell(control)
-	if control === true
+mixin cell(control, error)
+	if control
 		td.success 
 			i.fa.fa-smile-o.fa-2x
-	else
+	else if error !== ''
+		td.danger
+			i.fa.fa-frown-o.fa-2x
+	else if !control
 		td.warning 
 			i.fa.fa-meh-o.fa-2x
 

@@ -41,38 +41,38 @@ block content
 					if user.name === ''
 						li You need to upload your information - 
 							i.fa.fa-meh-o.fa-2x
-					else if user.errorData
+					else if user.controlData
+						li.text-success Your info is ok - 
+							i.fa.fa-smile-o.fa-2x
+					else if user.errorData !== ''
 						li.text-danger There is something wrong, check your info again! - 
 							i.fa.fa-frown-o.fa-2x
 					else if !user.controlData
 						li.text-primary You have uploaded your info, we will check it!
-					else if user.controlData
-						li.text-success Your info is ok - 
-							i.fa.fa-smile-o.fa-2x
 
 					if user.fileId === ''
 						li You need to upload a copy of your ID - 
 							i.fa.fa-meh-o.fa-2x
-					else if user.errorId !== 'Correcto'
-						li.text-danger There is something wrong, check your upload again! - 
-							i.fa.fa-frown-o.fa-2x
-					else if !user.controlId
-						li.text-primary You have uploaded your ID, we will check it!
 					else if user.controlId
 						li.text-success Your ID is ok - 
 							i.fa.fa-smile-o.fa-2x
+					else if user.errorId !== ''
+						li.text-danger There is something wrong with your ID, check your upload again! - 
+							i.fa.fa-frown-o.fa-2x
+					else if !user.controlId
+						li.text-primary You have uploaded your ID, we will check it!
 
 					if user.fileCard === ''
 						li You need to upload a copy of your ESN CARD - 
 							i.fa.fa-meh-o.fa-2x
-					else if user.errorCard !== 'Correcto'
-						li.text-danger There is something wrong, check your upload again! - 
-							i.fa.fa-frown-o.fa-2x
-					else if !user.controlCard
-						li.text-primary You have uploaded your ESN CARD, we will check it!
 					else if user.controlCard
 						li.text-success Your ESN CARD is ok - 
 							i.fa.fa-smile-o.fa-2x
+					else if user.errorCard !== ''
+						li.text-danger There is something wrong with your ESNcard, check your upload again! - 
+							i.fa.fa-frown-o.fa-2x
+					else if !user.controlCard
+						li.text-primary You have uploaded your ESN CARD, we will check it!
 
 			.col-md-5
 				i.fa.fa-file-text.fa-5x
@@ -81,36 +81,37 @@ block content
 					if user.fileResponsable === ''
 						li You need to upload the Responsability exception - 
 							i.fa.fa-meh-o.fa-2x
-					else if user.errorResponsable !== 'Correcto'
-						li.text-danger There is something wrong, check your upload again! - 
-							i.fa.fa-frown-o.fa-2x
-					else if !user.controlResponsable
-						li.text-primary You have uploaded the responsability, we will check it! 
 					else if user.controlResponsable
 						li.text-success Your responsability exception is ok - 
 							i.fa.fa-smile-o.fa-2x
+					else if user.errorResponsable !== ''
+						li.text-danger There is something wrong with the exception, check your upload again! - 
+							i.fa.fa-frown-o.fa-2x
+					else if !user.controlResponsable
+						li.text-primary You have uploaded the responsability, we will check it! 
 
 					if user.filePolicia === ''
 						li You need to upload the Appartment paper - 
 							i.fa.fa-meh-o.fa-2x
-					else if user.errorPolicia !== 'Correcto'
-						li.text-danger There is something wrong, check your info again! - 
-							i.fa.fa-frown-o.fa-2x
-					else if !user.controlPolicia
-						li.text-primary You have uploaded the Appartment paper, we will check it! 
 					else if user.controlPolicia
 						li.text-success Your Appartment paper is ok - 
 							i.fa.fa-smile-o.fa-2x
+					else if user.errorPolicia !== ''
+						li.text-danger There is something wrong with Police paper, check your info again! - 
+							i.fa.fa-frown-o.fa-2x
+					else if !user.controlPolicia
+						li.text-primary You have uploaded the Appartment paper, we will check it! 
 
 					if user.filePago === ''
 						li You need to upload the proof of payment - 
 							i.fa.fa-meh-o.fa-2x
-					else if user.errorPago !== 'Correcto'
-						li.text-danger There is something wrong, check your upload again! - 
-							i.fa.fa-frown-o.fa-2x
-					else if !user.controlPago
-						li.text-primary You have uploaded your payment, we will check it! 
 					else if user.controlPago
 						li.text-success Your payment is ok - 
 							i.fa.fa-smile-o.fa-2x
+					else if user.errorPago !== ''
+						li.text-danger There is something wrong with the payment proof, check your upload again! - 
+							i.fa.fa-frown-o.fa-2x
+					else if !user.controlPago
+						li.text-primary You have uploaded your payment, we will check it! 
+					
 
