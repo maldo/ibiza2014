@@ -46,9 +46,13 @@ block content
 					|	#{erasmus.public.gender}
 			.col-md-4
 				h4 ID
-				a(href='/#{erasmus.public.fileId}')
-					strong Archivo ID
-					br
+				if erasmus.public.fileId
+					a(href='/#{erasmus.public.fileId}')
+						strong Archivo Id
+						br
+				else 
+					p 
+					|	Not Yet!
 				form(action='/admin/#{erasmus.email}/Id', method='post')
 					.form-group
 						label(for='controlCard')
@@ -64,9 +68,13 @@ block content
 					button.btn.btn-primary(type='submit') Set Id
 			.col-md-4
 				h4 ESNcard
-				a(href='/#{erasmus.public.fileCard}')
-					strong Archivo Card
-					br
+				if erasmus.public.fileCard
+					a(href='/#{erasmus.public.fileCard}')
+						strong Archivo ESNCard
+						br
+				else 
+					p 
+					|	Not Yet!
 				form(action='/admin/#{erasmus.email}/Card', method='post')
 					.form-group
 						label(for='controlCard')
@@ -80,3 +88,71 @@ block content
 						br
 						textarea.form-control(type='text', name='msg', placeholder="#{erasmus.public.errorCard}")
 					button.btn.btn-primary(type='submit') Set Card
+		.row
+			h1 Docs
+			.col-md-4
+				h4 Comprobante Pago
+				if erasmus.public.filePago
+					a(href='/#{erasmus.public.filePago}')
+						strong Archivo Pago
+						br
+				else 
+					p 
+					|	Not Yet!
+				form(action='/admin/#{erasmus.email}/Pago', method='post')
+					.form-group
+						label(for='controlPago')
+						select#esncard.form-control(type='text', name='ok')
+							if erasmus.public.controlPago
+								option Ok
+							else
+								option Mal
+							option Ok
+							option Mal
+						br
+						textarea.form-control(type='text', name='msg', placeholder="#{erasmus.public.errorPago}")
+					button.btn.btn-primary(type='submit') Set Pago
+			.col-md-4
+				h4 Responsabilidad civil
+				if erasmus.public.fileResponsable
+					a(href='/#{erasmus.public.fileResponsable}')
+						strong Archivo Responsable
+						br
+				else 
+					p 
+					|	Not Yet!
+				form(action='/admin/#{erasmus.email}/Responsable', method='post')
+					.form-group
+						label(for='controlResponsable')
+						select#esncard.form-control(type='text', name='ok')
+							if erasmus.public.controlResponsable
+								option Ok
+							else
+								option Mal
+							option Ok
+							option Mal
+						br
+						textarea.form-control(type='text', name='msg', placeholder="#{erasmus.public.errorResponsable}")
+					button.btn.btn-primary(type='submit') Set Responsabilidad
+			.col-md-4
+				h4 Policia
+				if erasmus.public.filePolicia
+					a(href='/#{erasmus.public.filePolicia}')
+						strong Archivo Policia
+						br
+				else 
+					p 
+					|	Not Yet!
+				form(action='/admin/#{erasmus.email}/Policia', method='post')
+					.form-group
+						label(for='controlPolicia')
+						select#esncard.form-control(type='text', name='ok')
+							if erasmus.public.controlPolicia
+								option Ok
+							else
+								option Mal
+							option Ok
+							option Mal
+						br
+						textarea.form-control(type='text', name='msg', placeholder="#{erasmus.public.errorPolicia}")
+					button.btn.btn-primary(type='submit') Set Policia
