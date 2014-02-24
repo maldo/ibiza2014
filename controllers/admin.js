@@ -14,12 +14,27 @@ _.getLogin = function (req, res) {
 
 _.postLogin = function (req, res) {
 	req.session.isAdmin = true;
+	req.session.skip = 0;
 	res.redirect('/admin');
 };
 
 _.getAdmin = function (req, res) {
 
-	Erasmus.find(function (err, docs) {
+	var skipping = 25;
+
+	if (req.path === '/admin/previous') {
+		req.session.skip -= skipping;
+		if (req.session.skip <= 0) req.session.skip = 0;
+	} else if (req.path === '/admin/next') {
+		req.session.skip += skipping;
+	} else {
+		req.session.skip = 0;
+	}
+
+	Erasmus.find()
+	.limit(skipping)
+	.skip(req.session.skip)
+	.exec(function (err, docs) {
 		res.render('admin', {data: docs});
 	});
 };

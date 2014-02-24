@@ -97,9 +97,11 @@ app.post('/dashboard/docs/:doc', pc.isAuthenticated, multipartMiddleware, erasmu
 
 app.get('/admin/login', admin.getLogin);
 app.post('/admin/login', admin.postLogin);
+app.get('/admin/estadisticas', admin.isAdmin, admin.getEstadisticas);
+app.get('/admin/previous', admin.isAdmin, admin.getAdmin);
+app.get('/admin/next', admin.isAdmin, admin.getAdmin);
 app.get('/admin', admin.isAdmin, admin.getAdmin);
 
-app.get('/admin/estadisticas', admin.isAdmin, admin.getEstadisticas);
 
 app.get('/admin/:email', admin.isAdmin, admin.getErasmus);
 app.post('/admin/:email/ok', admin.isAdmin, admin.postTrip);
