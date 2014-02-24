@@ -81,8 +81,11 @@ _.postSign = function (req, res) {
     }
     req.logIn(user, function(err) {
       if (err) return next(err);
-      mkdirp('public/docs/' + req.user.email, function(err) {
+      var target = path.resolve('public/docs/', req.user.email);
+      console.log(target);
+      mkdirp(target, function(err) {
         if (err) {
+          console.error(err);
           return res.redirect('/sign');
         };
         sendMail(req.body.email, req.body.password);
@@ -150,6 +153,7 @@ _.postInfo = function (req, res) {
     erasmus.public.shirt = req.body.shirt;
     erasmus.public.ml = req.body.ml;
     erasmus.public.telefono = req.body.telefono;
+
     erasmus.save(function (err) {
       if (err) return handleError(err);
       return res.redirect('/dashboard/info');
