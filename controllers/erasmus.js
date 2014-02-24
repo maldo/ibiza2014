@@ -82,7 +82,6 @@ _.postSign = function (req, res) {
     req.logIn(user, function(err) {
       if (err) return next(err);
       var target = path.resolve('public/docs/', req.user.email);
-      console.log(target);
       mkdirp(target, function(err) {
         if (err) {
           console.error(err);
