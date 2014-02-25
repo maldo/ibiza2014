@@ -20,6 +20,9 @@ body {
 }
 
 /* Side Menu */
+#izq {
+  right: 20px;
+}
 
 #sidebar-wrapper {
   margin-right: -250px;
@@ -83,7 +86,14 @@ body {
   background: none;
 }
 
-#menu-toggle {
+#sign-toggle {
+  top: 10px;
+  right: 75px;
+  position: fixed;
+  z-index: 1;
+}
+
+#login-toggle {
   top: 10px;
   right: 10px;
   position: fixed;
