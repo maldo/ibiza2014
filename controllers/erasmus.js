@@ -15,6 +15,10 @@ _.terms = function (req, res) {
 	res.render('terms');
 };
 
+_.termsEn = function (req, res) {
+  res.render('terms_en');
+};
+
 _.getLogin = function (req, res) {
 	res.render('login');
 };

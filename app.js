@@ -77,6 +77,7 @@ app.use(express.errorHandler());
 
 app.get('/', erasmus.index);
 app.get('/terms', erasmus.terms);
+app.get('/terms/en', erasmus.termsEn);
 app.get('/login', erasmus.getLogin);
 // app.post('/login', userController.postLogin);
 // app.get('/logout', userController.logout);
