@@ -186,6 +186,11 @@ i.service-icon {
   margin: 0 auto;
 }
 
+.img-responsive {
+  display: inline;
+  height: auto;
+  max-width: 100%;
+}
 
 /* Call to Action */
 
