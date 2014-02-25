@@ -33,6 +33,34 @@ block content
           img.img-portfolio.img-responsive(src='img/logoub.jpg')
           img.img-portfolio.img-responsive(src='img/logobcn.jpg')
 
+  #carousel-example-generic.carousel.slide(data-ride='carousel')
+    //Indicators 
+    ol.carousel-indicators
+      li.active(data-target='#carousel-example-generic', data-slide-to='0')
+      li(data-target='#carousel-example-generic', data-slide-to='1')
+      li(data-target='#carousel-example-generic', data-slide-to='2')
+    // Wrapper for slides 
+    .carousel-inner
+      .item.active
+        img(src='http://placehold.it/900x500', alt='')
+        .carousel-caption
+          | slide 1
+      .item
+        img(src='http://placehold.it/900x500', alt='')
+        .carousel-caption
+          | slide 2
+      .item
+        img(src='http://placehold.it/900x500', alt='')
+        .carousel-caption
+          | slide 3
+
+    //Controls 
+    a.left.carousel-control(href='#carousel-example-generic', data-slide='prev')
+      span.glyphicon.glyphicon-chevron-left
+    a.right.carousel-control(href='#carousel-example-generic', data-slide='next')
+      span.glyphicon.glyphicon-chevron-right
+
+
   //Services 
   #services.services
     .container
