@@ -209,6 +209,10 @@ i.service-icon {
   padding-bottom: 50px;
 }
 
+#trip h2 {
+  color: white;
+}
+
 /* Call to Action */
 
 .call-to-action {
