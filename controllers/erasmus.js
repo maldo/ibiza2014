@@ -19,6 +19,14 @@ _.termsEn = function (req, res) {
   res.render('terms_en');
 };
 
+_.faqs = function (req, res) {
+  res.render('faq');
+};
+
+_.faqsEn = function (req, res) {
+  res.render('faq_en');
+};
+
 _.getLogin = function (req, res) {
 	res.render('login');
 };
