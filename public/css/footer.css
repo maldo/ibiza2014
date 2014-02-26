@@ -5,28 +5,3 @@
 	background-color: #f8f8f8;
 	border-top: 1px solid #e7e7e7;
 }
-
-.fa-5x {
-	font-size: 5em;
-	color: blue;
-}
-
-.navbar-default {
-  background-color: #2E3192;
-  border-color: #e7e7e7;
-}
-
-.navbar-default .navbar-brand {
-  color: #F47B20;
-}
-
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
-  color: #555555;
-  background-color: #00AEEF;
-}
-
-.navbar-default .navbar-nav > li > a {
-  color: white;
-}
