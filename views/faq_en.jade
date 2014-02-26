@@ -1,149 +1,135 @@
-.container
-		h1 FAQ
-		ul
-			li strong Is it true that you can’t have access to the ESN parties if you are not part of the ESN Ibiza trip?
- 
-			li Yes, it is. The parties are exclusive for students travelling with ESN. There’s no chance to sell the remaining entrance tickets to people who are not travelling with us.
-			 
-			li strong I have heard that last year some students were not allowed to get into some night clubs. Is that true?
-			 
-			li Yes, indeed. Some people preferred to book another trip cheaper than the ESN trip. These “other” trips are cheaper because neither parties nor drinks are included in the price. So, if you really want to enjoy your nights ESN style, make sure you book OUR trip.
-			 
-			li strong Can a friend of mine, who’s studying in another university, city or country, come to the trip to Ibiza?
-			 
-			li He/she can come. He just has to select “other universities” in the University field when he fills in the registration form. First of all, make sure their home university is not attending to the trip and make them acquire and ESN Card.
-			 
-			li strong I made an Erasmus in Barcelona but I am already back in my country. Can I still come from there?
-			 
-			li Of course you can!  You’ll make a big “remember” of your Erasmus year in Barcelona! Just make sure that your ESN Card is still valid or renew it otherwise.
-			 
-			li strong Why hasn’t my payment been confirmed yet?
-			 
-			li There are a few options: Maybe you made an international transfer that’s taking a while to arrive. We’ll confirm your payment when we receive it. Maybe you didn’t make the registration and uploaded the payment document. Do it as soon as possible and we will send you a confirmation.
-			 
-			li strong What happens if the ID I sent you was stolen/lost?
-			Send us a scanned copy of the new one you are using as soon as possible! You should also attach a scanned copy of the police report.
-			 
-			li strong What is the police document used for?
-			 
-			li Every hotel requests some identification data to their customers, so that they can send it to police to check no one has charges in their home countries.
-			 
-			li strong Why do I have to complete the liability waiver?
-			 
-			li This document is a commitment of good behaviour. In the case of not behaving properly ESN members have every right to make decisions concerning you. You are all grown-up, because of whom we shouldn’t have to face problems.
-			 
-			li strong Does the price include the parties?
-			 
-			li Yes, all the parties are included in the price. In addition, you will enjoy a drink at each party.
-			Transport is also included to every nightclub or party location.
-			 
-			li strong Can I go to the trip if I am not in one of the universities of ESN Barcelona?
-			 
-			li Sure you can come. At the time of registration you just have to write that you are in another university selecting “other universities” in the “university” section. However, first of all you should be sure that there is not ESN section in your university.
-			 
-			li strong If I pay the price without ESN Card and then buy it, can I get back the price difference?
-			 
-			li No, you have to own an ESN Card when you make the payment and put the number of your ESN Card as the “income concept”.
-			 
-			li strong If I have any other questions about the trip, what should I do?
-			 
-			li If you have doubts or questions, please send an email to: ibiza@esnbarcelona.org We will try to help you. We will hold an informative session where we will try to solve all your doubts. You will have further information in the ESN Barcelona trip Facebook event.
-			 
-			li strong If my friends and I are in different universities, can we sleep in the same room?
-			 
-			li If both of you are travelling with ESN Barcelona we will all be in the same hotel. So you will be able to share the room with your friends. On the other side, if you travel with any other section of the rest of Spain, this won’t be possible. This is due to the fact that each section sleeps in a different hotel and takes care of their own Erasmus, so in terms of organization it will be a complete mess.
-			 
-			li strong If I my home-country is of outside the EU, do I need some extra paper?
-			 
-			li You must send a copy of your identity card and a copy of the necessary visa to stay in
-			Spain.
-			 
-			li strong Instead of ID or passport can I send my driving license?
-			 
-			li No, because driving license is not an official document of identity and the hotel will not accept this kind of document. They only accept Identity Cards or Passports.
-			 
-			li strong Why is it better not to pay from an international account?
-			 
-			li It is not recommended to do this because the payment takes longer to reach our account and so it takes longer to confirm your payment. In case the trip places are complete, and any payment from a national account comes first, payments from national accounts will be added first to the waiting list.
-			 
-			li strong Is there any deadline for the submitting of the documents?
-			 
-			li There is no exact deadline for uploading them, but you should know that no one will be allowed to enter the boat if the documents haven’t been sent previously. Moreover, as these documents are extremely important, your trip won’t be confirmed until we receive them. If there is a waiting list for the trip, we will give priority to the ones that have sent the documents even if they have paid later than you.
-			 
-			li strong I do not have an scanner at my place. How can I upload my documents?
-			 
-			li If you do not own an scanner, ask your friends. If they can’t help you, you will find an scanner in the library of your university.
-			 
-			li strong Can I join the trip if I am a Spanish student?
-			 
-			li Yes, you can. The trip is open to all kind of students. Just make sure to fill in the questionnaire with your current university and acquire an ESN Card as soon as possible!
-			 
-			li strong How long does it take to receive the confirmation of my booking?
-			 
-			li The very same moment in which we receive your payment receipt we will check the payment’s in order our bank account. Then you’ll be able to move onto the next step: upload your documents. Once we verify them, you’ll be in, and thus you’ll receive an email from us with the confirmation of your booking. We are doing this on a daily basis, so it might take up to one or two days after uploading the documents to receive the confirmation email.
-			 
-			li strong Can I join the Barcelona group to go to Ibiza and then come back with another group to another destination?
-			 
-			li No, that won’t be possible, for each group has the exact amount of places needed for their own students.
-			 
-			li strong I’ve seen on Facebook the same trip with different dates. Why?
-			 
-			li Probably you have seen a different ESN event which is not the ESN Barcelona one. The ESN sections departing from Barcelona will do it in a different timing than the rest of the Spanish sections.
-			li strong I have already paid the trip, but I cannot go. Can I get my money back?
-			 
-			li In case of a justified cancellation, the quantity of refunded money will depend on the date:
+extends layout
+
+block content
+	.navbar.navbar-default.navbar-static-top(role='navigation')
+		.container
+			.navbar-header
+				button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+					span.sr-only Toggle navigation
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				a.navbar-brand(href='/') Ibiza
+			.navbar-collapse.collapse
+				ul.nav.navbar-nav
+					li
+						a(href='/faq') Español
+					li.active
+						a(href='/faq/en') English
+
+	.container
+			h1 FAQ
 			ul
-				li 100% of the total amount will be refunded until March 21th
-				li 50% of the total amount will be refunded between March 22th & March 28th
-				li No money will be refunded from March 28th onwards.
-			 
-			 
-			li strong Can you provide me with some information regarding the accommodation?
-			 
-			li For the moment, that is unfortunately not possible. As soon as we obtain the information about the hotels and their rooms, we will send it out to you all.
-			 
-			li strong Can I book a place without paying?
-			 
-			li We cannot reserve you a place without you paying for it first.
-			 
-			li strong Can I join you for fewer days paying a lower price?
-			 
-			li  We are sorry, but this is not possible. If you want to come with us, you have to pay for the whole pack.
-			 
-			li strong Some of my friends are also going to Ibiza in those dates, but not with ESN. Can they join us in the ESN parties?
-			 
-			li Your friends won’t be able to take part in the ESN parties unless they come with us.
-			 
-			li strong What if I haven’t chosen / I don’t have roommates?
-			 
-			li  When the time of organizing the rooms comes, let us know. Tell us your gender and your preferences regarding your future roommates, and we will try to make you feel comfortable with our choices :)
-			You might as well want to send us a private email with full-body picture, resumée and your A/S/L and the ESN coordinators will try to personally place you in the right room (and by right, we mean “filled with love”;)
-			 
-			li strong What if I lose the entrance tickets to the parties?
-			 
-			li You should be extremely careful with them, because if you lose them, we cannot guarantee your entrance to the parties!
-			 
-			li strong I did my payment for the trip with 2 other friends; do we have to fill in the form separately?
-			 
-			li Each of you should register and fill in the form separately. Once you have to upload the payment proof, all of you will have to upload the same copy of the document. Take into account that the names and surnames of all of you should appear in the concept.
-			 
-			li strong I am not able to choose between my leopard thong and my see-through bikini. Are there any weight limits for hand luggage?
-			 
-			li Currently there are no established limits of weight for ships. You can take both of them and leave you decision for later on.
-			 
-			li strong I want to change the colour of my nails depending on the bikini I wear every day. Are there any liquid restrictions on the boat?
-			 
-			li There are no liquid restrictions for boats. Feel free of taking them all!
-			 
-			li strong There is no free room for my elephant trunk thong. Can I wear it during the trip on the boat?
-			 
-			li You can wear it during the trip, but while doing the check-in you should wear something more traditional. Anyway, you are lucky! In Ibiza and Formentera nudism is allowed.
-			 
-			li strong  My weekend’s girlfriend will be in one room, while the daily one will be in a different one. Can I change rooms to any of them at night?
-			 
-			li At night you will be able to sleep with any of them. However and to avoid problems with any of them, we recommend you to have your base camp in your own room, you’ll never know if you’ll meet the third one...
-			You should know that we won’t be alone in the hotel, so your behaviour at night has to be decent, to say the least.
-			 
-			li strong I have decided to take four condoms boxes to the Ibiza trip. Will I have enough? If I need more, will I be able to buy them in Ibiza?
-			 
-			li Don’t worry: you have every type of shops in Ibiza where you can buy everything necessary to survive and fully enjoy the ESN trip.
+				li 
+					strong Is it true that you can’t have access to the ESN parties if you are not part of the ESN Ibiza trip?
+				li Yes, it is. The parties are exclusive for students travelling with ESN. There’s no chance to sell the remaining entrance tickets to people who are not travelling with us.
+				li 
+					strong I have heard that last year some students were not allowed to get into some night clubs. Is that true?
+				li Yes, indeed. Some people preferred to book another trip cheaper than the ESN trip. These “other” trips are cheaper because neither parties nor drinks are included in the price. So, if you really want to enjoy your nights ESN style, make sure you book OUR trip.
+				li 
+					strong Can a friend of mine, who’s studying in another university, city or country, come to the trip to Ibiza?
+				li He/she can come. He just has to select “other universities” in the University field when he fills in the registration form. First of all, make sure their home university is not attending to the trip and make them acquire and ESN Card.
+				li 
+					strong I made an Erasmus in Barcelona but I am already back in my country. Can I still come from there?
+				li Of course you can!  You’ll make a big “remember” of your Erasmus year in Barcelona! Just make sure that your ESN Card is still valid or renew it otherwise.
+				li 
+					strong Why hasn’t my payment been confirmed yet?
+				li There are a few options: Maybe you made an international transfer that’s taking a while to arrive. We’ll confirm your payment when we receive it. Maybe you didn’t make the registration and uploaded the payment document. Do it as soon as possible and we will send you a confirmation.
+				li 
+					strong What happens if the ID I sent you was stolen/lost?
+				li Send us a scanned copy of the new one you are using as soon as possible! You should also attach a scanned copy of the police report.
+				li 
+					strong What is the police document used for?
+				li Every hotel requests some identification data to their customers, so that they can send it to police to check no one has charges in their home countries.
+				li 
+					strong Why do I have to complete the liability waiver?
+				li This document is a commitment of good behaviour. In the case of not behaving properly ESN members have every right to make decisions concerning you. You are all grown-up, because of whom we shouldn’t have to face problems.
+				li 
+					strong Does the price include the parties?
+				li Yes, all the parties are included in the price. In addition, you will enjoy a drink at each party.
+				Transport is also included to every nightclub or party location.
+				li 
+					strong Can I go to the trip if I am not in one of the universities of ESN Barcelona?
+				li Sure you can come. At the time of registration you just have to write that you are in another university selecting “other universities” in the “university” section. However, first of all you should be sure that there is not ESN section in your university.
+				li 
+					strong If I pay the price without ESN Card and then buy it, can I get back the price difference?
+				li No, you have to own an ESN Card when you make the payment and put the number of your ESN Card as the “income concept”.
+				li 
+					strong If I have any other questions about the trip, what should I do?
+				li If you have doubts or questions, please send an email to: ibiza@esnbarcelona.org We will try to help you. We will hold an informative session where we will try to solve all your doubts. You will have further information in the ESN Barcelona trip Facebook event.
+				li 
+					strong If my friends and I are in different universities, can we sleep in the same room?
+				li If both of you are travelling with ESN Barcelona we will all be in the same hotel. So you will be able to share the room with your friends. On the other side, if you travel with any other section of the rest of Spain, this won’t be possible. This is due to the fact that each section sleeps in a different hotel and takes care of their own Erasmus, so in terms of organization it will be a complete mess.
+				li 
+					strong If I my home-country is of outside the EU, do I need some extra paper?
+				li You must send a copy of your identity card and a copy of the necessary visa to stay in
+				Spain.
+				li 
+					strong Instead of ID or passport can I send my driving license?
+				li No, because driving license is not an official document of identity and the hotel will not accept this kind of document. They only accept Identity Cards or Passports.
+				li 
+					strong Why is it better not to pay from an international account?
+				li It is not recommended to do this because the payment takes longer to reach our account and so it takes longer to confirm your payment. In case the trip places are complete, and any payment from a national account comes first, payments from national accounts will be added first to the waiting list.
+				li 
+					strong Is there any deadline for the submitting of the documents?
+				li There is no exact deadline for uploading them, but you should know that no one will be allowed to enter the boat if the documents haven’t been sent previously. Moreover, as these documents are extremely important, your trip won’t be confirmed until we receive them. If there is a waiting list for the trip, we will give priority to the ones that have sent the documents even if they have paid later than you.
+				li 
+					strong I do not have an scanner at my place. How can I upload my documents?
+				li If you do not own an scanner, ask your friends. If they can’t help you, you will find an scanner in the library of your university.
+				li 
+					strong Can I join the trip if I am a Spanish student?
+				li Yes, you can. The trip is open to all kind of students. Just make sure to fill in the questionnaire with your current university and acquire an ESN Card as soon as possible!
+				li 
+					strong How long does it take to receive the confirmation of my booking?
+				li The very same moment in which we receive your payment receipt we will check the payment’s in order our bank account. Then you’ll be able to move onto the next step: upload your documents. Once we verify them, you’ll be in, and thus you’ll receive an email from us with the confirmation of your booking. We are doing this on a daily basis, so it might take up to one or two days after uploading the documents to receive the confirmation email.
+				li 
+					strong Can I join the Barcelona group to go to Ibiza and then come back with another group to another destination?
+				li No, that won’t be possible, for each group has the exact amount of places needed for their own students.
+				li 
+					strong I’ve seen on Facebook the same trip with different dates. Why?
+				li Probably you have seen a different ESN event which is not the ESN Barcelona one. The ESN sections departing from Barcelona will do it in a different timing than the rest of the Spanish sections.
+				li 
+					strong I have already paid the trip, but I cannot go. Can I get my money back?
+				li In case of a justified cancellation, the quantity of refunded money will depend on the date:
+				ul
+					li 100% of the total amount will be refunded until March 21th
+					li 50% of the total amount will be refunded between March 22th & March 28th
+					li No money will be refunded from March 28th onwards.
+				li 
+					strong Can you provide me with some information regarding the accommodation?
+				li For the moment, that is unfortunately not possible. As soon as we obtain the information about the hotels and their rooms, we will send it out to you all.
+				li 
+					strong Can I book a place without paying?
+				li We cannot reserve you a place without you paying for it first.
+				li 
+					strong Can I join you for fewer days paying a lower price?
+				li We are sorry, but this is not possible. If you want to come with us, you have to pay for the whole pack.
+				li 
+					strong Some of my friends are also going to Ibiza in those dates, but not with ESN. Can they join us in the ESN parties?
+				li Your friends won’t be able to take part in the ESN parties unless they come with us.
+				li 
+					strong What if I haven’t chosen / I don’t have roommates?
+				li When the time of organizing the rooms comes, let us know. Tell us your gender and your preferences regarding your future roommates, and we will try to make you feel comfortable with our choices :)
+				| You might as well want to send us a private email with full-body picture, resumée and your A/S/L and the ESN coordinators will try to personally place you in the right room (and by right, we mean “filled with love”;)
+				li
+					strong What if I lose the entrance tickets to the parties?
+				li You should be extremely careful with them, because if you lose them, we cannot guarantee your entrance to the parties!
+				li 
+					strong I did my payment for the trip with 2 other friends; do we have to fill in the form separately?
+				li Each of you should register and fill in the form separately. Once you have to upload the payment proof, all of you will have to upload the same copy of the document. Take into account that the names and surnames of all of you should appear in the concept.
+				li 
+					strong I am not able to choose between my leopard thong and my see-through bikini. Are there any weight limits for hand luggage?
+				li Currently there are no established limits of weight for ships. You can take both of them and leave you decision for later on.
+				li 
+					strong I want to change the colour of my nails depending on the bikini I wear every day. Are there any liquid restrictions on the boat?
+				li There are no liquid restrictions for boats. Feel free of taking them all!
+				li 
+					strong There is no free room for my elephant trunk thong. Can I wear it during the trip on the boat?
+				li You can wear it during the trip, but while doing the check-in you should wear something more traditional. Anyway, you are lucky! In Ibiza and Formentera nudism is allowed.
+				li 
+					strong  My weekend’s girlfriend will be in one room, while the daily one will be in a different one. Can I change rooms to any of them at night?
+				li At night you will be able to sleep with any of them. However and to avoid problems with any of them, we recommend you to have your base camp in your own room, you’ll never know if you’ll meet the third one...
+				You should know that we won’t be alone in the hotel, so your behaviour at night has to be decent, to say the least.
+				li 
+					strong I have decided to take four condoms boxes to the Ibiza trip. Will I have enough? If I need more, will I be able to buy them in Ibiza?
+				li Don’t worry: you have every type of shops in Ibiza where you can buy everything necessary to survive and fully enjoy the ESN trip.
