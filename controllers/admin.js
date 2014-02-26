@@ -62,7 +62,7 @@ _.postControl = function (req, res) {
 		} else {
 			doc.public['control' + control] = false;
 			doc.public['error' + control] = msg || 'Error con los datos, revisalos, por favor';
-			sendMail(email, '[ESN IBIZA] Review your files', msg);
+			sendMail(email, '[ESN IBIZA] Review your files', doc.public['error' + control]);
 		}
 		doc.save(function(err, doc) {
 			return res.redirect('/admin/' + email);
