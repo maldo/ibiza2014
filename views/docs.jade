@@ -27,7 +27,19 @@ block content
 
 	.container
 		h1 Documents
-		h4 We need this documents, because the appartment ask for them
+		h4 We need this documents, because the appartment ask for them.
+		p You have to fill these documents:
+		ul
+			li 
+				a(href='/FormularioPolicia.doc') Police Document 
+			li
+				a(href='/FormularioResponsabilidad.doc') Responsability Document
+		p These two files are an example of how to fill the documents:
+		ul
+			li 
+				a(href='/EJEMPLO_FormularioPolicia.pdf') Example of Police Document 
+			li
+				a(href='/EJEMPLO_FormularioResponsabilidad.pdf') Example of Responsability Document
 
 	.container
 		h2 Your documents
@@ -46,12 +58,12 @@ block content
 			.form-group
 				label(for='filePolicia') 
 					if user.filePolicia
-						a(href='/#{user.filePolicia}') Your Appartment paper
+						a(href='/#{user.filePolicia}') Your Police paper
 					else
-						| Copy of the Appartment paper
+						| Copy of the Police paper
 				input#filePolicia(type='file', name='file')
 				p.help-block Files (.pdf, .jpeg, .png) up to 2MB.
-			button.btn.btn-default(type='submit') Submit the Appartment paper
+			button.btn.btn-default(type='submit') Submit the Police paper
 
 		form.col-md-4(role='form', method='post', enctype='multipart/form-data' action='/dashboard/docs/pago')
 			.form-group
