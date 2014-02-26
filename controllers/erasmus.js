@@ -142,6 +142,7 @@ _.postInfo = function (req, res) {
   req.assert('shirt', 'T-shirt cannot be blank').notEmpty();
   req.assert('ml', 'ML language cannot be blank').notEmpty();
   req.assert('telefono', 'ML language cannot be blank').notEmpty();
+  req.assert('uni', 'University cannot be blank').notEmpty();
 
   var errors = req.validationErrors();
 
@@ -163,6 +164,7 @@ _.postInfo = function (req, res) {
     erasmus.public.gender = req.body.gender;
     erasmus.public.shirt = req.body.shirt;
     erasmus.public.ml = req.body.ml;
+    erasmus.public.uni = req.body.uni;
     erasmus.public.telefono = req.body.telefono;
 
     erasmus.save(function (err) {

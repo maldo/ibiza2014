@@ -290,6 +290,15 @@ block content
 				label(for='telefono') Phone number
 				input#esncard.form-control(type='text', name='telefono', placeholder='#{user.telefono}')
 			.form-group
+				label(for='uni') University
+				select#esncard.form-control(type='text', name='uni')
+					option #{user.uni}
+					option UB
+					option UAB
+					option UPC
+					option UPF
+					option Others
+			.form-group
 				label(for='gender') Gender
 				select#esncard.form-control(type='text', name='gender')
 					option #{user.gender}
