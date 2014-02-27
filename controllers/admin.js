@@ -133,7 +133,7 @@ var getListId = function (lang) {
 
 	if (lang === 'Spanish')
 		return 'cc32415e33';
-	else if (lang === 'English') {
+	else {
 		return 'b2435a625b';
 	}
 };
