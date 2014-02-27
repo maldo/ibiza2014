@@ -117,7 +117,7 @@ var sendMail = function (email, title, msg) {
 
 
 var subscribe = function (email, listId){
-  mc.lists.subscribe({id: listId, email:{email:email}}, function(data) {
+  mc.lists.subscribe({id: listId, email:{email:email}, double_optin: false}, function(data) {
       console.log('User subscribed successfully! Look for the confirmation email.');
     },
     function(error) {
