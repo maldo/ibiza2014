@@ -155,6 +155,10 @@ _.postInfo = function (req, res) {
 
   Erasmus.findById(req.user._id, function (err, erasmus) {
     if (err) return handleError(err);
+
+    if (erasmus.public.ok) {
+      return res.redirect('/dashboard/info');
+    }
     
     erasmus.public.name = req.body.name;
     erasmus.public.lastname = req.body.lastname;
@@ -199,12 +203,14 @@ _.postInfoDocs = function (req, res) {
     newFile = 'docs/' + req.user.email + '/_ID' + ext;
   }
 
-  fs.rename(oldFile, 'public/' + newFile, function (err) {
-    if (err) throw err;
-      // Erasmus.update({_id: req.user._id}, {public[fileCard] = newFile}, function (err){
-      //   //if (err) return handleError(err);
-      // });
-    Erasmus.findById(req.user._id, function (err, erasmus) {
+  Erasmus.findById(req.user._id, function (err, erasmus) {
+    if (err) return handleError(err);
+
+    if (erasmus.public.ok) {
+      return res.redirect('/dashboard/info');
+    }
+
+    fs.rename(oldFile, 'public/' + newFile, function (err) {
       if (err) return handleError(err);
       
       if (doc === 'card') {
@@ -223,6 +229,7 @@ _.postInfoDocs = function (req, res) {
 _.getDocs = function (req, res) {
 	res.render('docs', {user: req.user.public});
 };
+
 _.postDocs = function (req, res) {
 	var doc = req.params.doc;
 
@@ -249,12 +256,14 @@ _.postDocs = function (req, res) {
     newFile = 'docs/' + req.user.email + '/_PAGO' + ext;
   }
 
-  fs.rename(oldFile, 'public/' + newFile, function (err) {
-    if (err) throw err;
-      // Erasmus.update({_id: req.user._id}, {public[fileCard] = newFile}, function (err){
-      //   //if (err) return handleError(err);
-      // });
-    Erasmus.findById(req.user._id, function (err, erasmus) {
+  Erasmus.findById(req.user._id, function (err, erasmus) {
+    if (err) return handleError(err);
+      
+    if (erasmus.public.ok) {
+      return res.redirect('/dashboard/docs');
+    }
+
+    fs.rename(oldFile, 'public/' + newFile, function (err) {
       if (err) return handleError(err);
       
       if (doc === 'responsable') {

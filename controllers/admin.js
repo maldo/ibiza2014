@@ -70,6 +70,11 @@ _.postControl = function (req, res) {
 	ok = getBooleanOk(ok);
 
 	Erasmus.findOne({ email: req.params.email}, function (err, doc) {
+
+		if (doc.public.ok) {
+			return res.redirect('/admin/' + email);
+		}
+
 		if (ok) {
 			doc.public['control' + control] = true;
 			doc.public['error' + control] = 'Correcto';
