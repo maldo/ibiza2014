@@ -1,5 +1,8 @@
+var crypto = require('crypto');
+
 var Erasmus = require('../models/Erasmus'),
-		mailing = require('../config/mailing');
+		mailing = require('../config/mailing'),
+		secrets = require('../config/secrets');
 
 var _ = module.exports = {};
 
@@ -13,9 +16,20 @@ _.getLogin = function (req, res) {
 };
 
 _.postLogin = function (req, res) {
-	req.session.isAdmin = true;
-	req.session.skip = 0;
-	res.redirect('/admin');
+
+	var user = req.body.email;
+	var password = req.body.password;
+
+	var huser = crypto.createHash('sha256').update(user).digest('hex');
+	var hpassword = crypto.createHash('sha256').update(password).digest('hex');
+
+	if (huser === secrets.adminUser && hpassword === secrets.adminPass) {
+		req.session.isAdmin = true;
+		req.session.skip = 0;
+		res.redirect('/admin');
+	} else {
+		res.redirect('/');
+	}
 };
 
 _.getAdmin = function (req, res) {
@@ -61,8 +75,12 @@ _.postControl = function (req, res) {
 			doc.public['error' + control] = 'Correcto';
 		} else {
 			doc.public['control' + control] = false;
-			doc.public['error' + control] = msg || 'Error con los datos, revisalos, por favor';
-			sendMail(email, '[ESN IBIZA] Review your files', doc.public['error' + control]);
+
+			if (msg === '') {
+				msg = 'Error con los datos, revisalos, por favor';
+			}
+			doc.public['error' + control] = msg;
+			sendMail(email, '[ESN IBIZA] Review your files',msg);
 		}
 		doc.save(function(err, doc) {
 			return res.redirect('/admin/' + email);
@@ -131,9 +149,9 @@ var subscribe = function (email, listId){
 
 var getListId = function (lang) {
 
-	if (lang === 'Spanish')
+	if (lang === 'Spanish') {
 		return 'cc32415e33';
-	else {
+	} else {
 		return 'b2435a625b';
 	}
 };
