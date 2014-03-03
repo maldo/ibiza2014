@@ -211,7 +211,10 @@ _.postInfoDocs = function (req, res) {
     }
 
     fs.rename(oldFile, 'public/' + newFile, function (err) {
-      if (err) return handleError(err);
+      if (err) { 
+        console.log(err);
+        return handleError(err);
+      }
       
       if (doc === 'card') {
       	erasmus.public.fileCard = newFile;
@@ -243,7 +246,7 @@ _.postDocs = function (req, res) {
 
   var ext = path.extname(req.files.file.path);
 
-  if (ext !== '.pdf' && ext !== '.png' && ext !== '.jpg') {
+  if (ext !== '.pdf' && ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg') {
   	req.flash('error', 'File with invalid extension');
   	return res.redirect('/dashboard/docs');
   }
@@ -264,10 +267,13 @@ _.postDocs = function (req, res) {
     }
 
     fs.rename(oldFile, 'public/' + newFile, function (err) {
-      if (err) return handleError(err);
+      if (err) {
+        console.log(err);
+        return handleError(err);
+      }
       
       if (doc === 'responsable') {
-      	erasmus.public.fileResponsable = newFile;
+        erasmus.public.fileResponsable = newFile;
       } else if (doc === 'policia') {
       	erasmus.public.filePolicia = newFile;
       } else if (doc === 'pago') {
