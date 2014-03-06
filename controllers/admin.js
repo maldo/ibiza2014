@@ -46,10 +46,20 @@ _.getAdmin = function (req, res) {
 	}
 
 	Erasmus.find()
+	.where('public.ok').equals(false)
 	.limit(skipping)
 	.skip(req.session.skip)
 	.exec(function (err, docs) {
 		res.render('admin', {data: docs});
+	});
+};
+
+_.getVerificados = function (req, res) {
+
+	Erasmus.find()
+	.where('public.ok').equals(true)
+	.exec(function (err, docs) {
+		res.render('verified', {data: docs});
 	});
 };
 
