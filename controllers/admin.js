@@ -114,8 +114,10 @@ _.postTrip = function (req, res) {
 				doc.public.controlPago)
 		{
 					doc.public.ok = true;
-					var msg = 'Estas dentro del viaje!!!\n Felicidades!!\n\n' +
-										'You are in!!!!\n Congrats!!';
+					var msg = 'Estas dentro del viaje!!! Felicidades!!\n\n' +
+										'Y no olvides unirte al grupo de ESN Ibiza Trip 2014 con ESN Barcelona, para enterarte de las últimas novedades, preguntar dudas y conocer a las personas que te acompañaran y convertirán este viaje en INOLVIDABLE www.facebook.com/groups/758718274158071/\n\n' +
+										'You are in!!!! Congrats!!\n\n' +
+										'And don\'t forget to join our facebook group, ESN Ibiza Trip 2014 with ESN Barcelona, to stay tuned on the last news, ask questions and meet the people that will join you and make this unforgettable Trip LEGENDARY! www.facebook.com/groups/758718274158071/';
 					sendMail(email, '[ESN IBIZA] Start Packing!!', msg);
 					var listId = getListId(doc.public.ml);
 					subscribe(email, listId);
