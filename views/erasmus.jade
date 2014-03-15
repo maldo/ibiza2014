@@ -187,4 +187,15 @@ block content
 			form.col-md-offset-2(action='/admin/#{erasmus.email}/ok', method='post')
 				button.btn.btn-success(type='submit') +1 al viaje!
 
+		.row
+			h1.text-danger Danger
+			p.text-danger Peligro! Danger! Achtung!! 
+			p Si le damos a borrar se borra el erasmus y todos su datos! 
+				strong NO 
+				| repito 
+				strong NO 
+				| se podran recuperar sus datos!!
+			form(action='/admin/#{erasmus.email}/delete', method='post')
+				button.btn.btn-danger(type='submit') Bye bye!!
+
 	include footer

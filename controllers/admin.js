@@ -1,4 +1,6 @@
 var crypto = require('crypto');
+var fs = require('fs');
+var path = require('path');
 
 var Erasmus = require('../models/Erasmus'),
 		mailing = require('../config/mailing'),
@@ -69,6 +71,21 @@ _.getErasmus = function (req, res) {
 	});
 };
 
+_.postDelete = function(req, res) {
+
+	Erasmus.findOneAndRemove({email: req.params.email}, function (err) {
+		if (err) console.log(err);
+
+		var folder = path.resolve('public/docs/', req.params.email);
+
+		fs.rmdir(folder, function (err) {
+			if (err) console.log(err);
+
+			res.redirect('/admin');
+		});
+	});
+};
+
 _.postControl = function (req, res) {
 
 	var control = req.params.control;
@@ -79,7 +96,7 @@ _.postControl = function (req, res) {
 
 	ok = getBooleanOk(ok);
 
-	Erasmus.findOne({ email: req.params.email}, function (err, doc) {
+	Erasmus.findOne({email: req.params.email}, function (err, doc) {
 
 		if (doc.public.ok) {
 			return res.redirect('/admin/' + email);

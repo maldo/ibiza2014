@@ -110,6 +110,7 @@ app.get('/admin', admin.isAdmin, admin.getAdmin);
 
 app.get('/admin/:email', admin.isAdmin, admin.getErasmus);
 app.post('/admin/:email/ok', admin.isAdmin, admin.postTrip);
+app.post('/admin/:email/delete', admin.isAdmin, admin.postDelete);
 app.post('/admin/:email/:control', admin.isAdmin, admin.postControl);
 
 app.listen(app.get('port'), function() {
