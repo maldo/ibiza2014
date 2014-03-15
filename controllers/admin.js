@@ -1,5 +1,5 @@
 var crypto = require('crypto');
-var fs = require('fs');
+var rm = require('rimraf');
 var path = require('path');
 
 var Erasmus = require('../models/Erasmus'),
@@ -78,7 +78,7 @@ _.postDelete = function(req, res) {
 
 		var folder = path.resolve('public/docs/', req.params.email);
 
-		fs.rmdir(folder, function (err) {
+		rm(folder, function (err) {
 			if (err) console.log(err);
 
 			res.redirect('/admin');
