@@ -36,19 +36,19 @@ _.getAdmin = function (req, res) {
 
 	var skipping = 25;
 
-	if (req.path === '/admin/previous') {
-		req.session.skip -= skipping;
-		if (req.session.skip <= 0) req.session.skip = 0;
-	} else if (req.path === '/admin/next') {
-		req.session.skip += skipping;
-	} else {
-		req.session.skip = 0;
-	}
+	// if (req.path === '/admin/previous') {
+	// 	req.session.skip -= skipping;
+	// 	if (req.session.skip <= 0) req.session.skip = 0;
+	// } else if (req.path === '/admin/next') {
+	// 	req.session.skip += skipping;
+	// } else {
+	// 	req.session.skip = 0;
+	// }
 
 	Erasmus.find()
 	.where('public.ok').equals(false)
-	.limit(skipping)
-	.skip(req.session.skip)
+	//.limit(skipping)
+	//.skip(req.session.skip)
 	.exec(function (err, docs) {
 		res.render('admin', {data: docs});
 	});
