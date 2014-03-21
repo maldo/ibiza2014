@@ -146,7 +146,24 @@ _.postTrip = function (req, res) {
 };
 
 _.getEstadisticas = function (req, res) {
-	res.redirect(301, 'https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+	
+	var data = {};
+
+	Erasmus.count()
+	.where('public.ok').equals(true)
+	.exec(function (err, count) {
+		data.van = count;
+	});
+
+	Erasmus.count()
+	.where('public.gender').equals('Male')
+	.exec(function (err, count) {
+		data.male = count;
+		date.female = data.van - data.male;
+	});
+
+
+
 };
 
 var getBooleanOk = function (ok) {
