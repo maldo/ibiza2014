@@ -147,22 +147,56 @@ _.postTrip = function (req, res) {
 
 _.getEstadisticas = function (req, res) {
 	
-	var data = {};
+	var data = {
+		gender : {},
+		nationality : {},
+		shirt : {},
+		uni : {},
+		ml : {}
+	};
 
-	Erasmus.count()
+	Erasmus.find()
 	.where('public.ok').equals(true)
-	.exec(function (err, count) {
-		data.van = count;
+	.exec(function (err, docs) {
+
+		data.ok = docs.length;
+
+		docs.forEach(function(d){
+			if (!data.gender[d.public.gender]) {
+				data.gender[d.public.gender] = 1
+			} else {
+				data.gender[d.public.gender] += 1;
+			}
+
+			if (!data.nationality[d.public.nationality]) {
+				data.nationality[d.public.nationality] = 1
+			} else {
+				data.nationality[d.public.nationality] += 1;
+			}
+
+			if (!data.shirt[d.public.shirt]) {
+				data.shirt[d.public.shirt] = 1
+			} else {
+				data.shirt[d.public.shirt] += 1;
+			}
+
+			if (!data.uni[d.public.uni]) {
+				data.uni[d.public.uni] = 1
+			} else {
+				data.uni[d.public.uni] += 1;
+			}
+
+			if (!data.ml[d.public.ml]) {
+				data.ml[d.public.ml] = 1
+			} else {
+				data.ml[d.public.ml] += 1;
+			}
+		});
+
+		res.send(data);
+		
 	});
-
-	Erasmus.count()
-	.where('public.gender').equals('Male')
-	.exec(function (err, count) {
-		data.male = count;
-		date.female = data.van - data.male;
-	});
-
-
+	
 
 };
 
