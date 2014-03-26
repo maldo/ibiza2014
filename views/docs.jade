@@ -51,7 +51,7 @@ block content
 					else
 						| Copy of your Responsability exception
 				input#fileResponsable(type='file', name='file')
-				p.help-block Files (.pdf, .jpeg, .png) up to 2MB.
+				p.help-block Files (.pdf, .jpeg, .jpg, .png) up to 2MB.
 			button.btn.btn-default(type='submit') Submit the Responsability paper
 
 		form.col-md-4(role='form', method='post', enctype='multipart/form-data' action='/dashboard/docs/policia')
@@ -62,7 +62,7 @@ block content
 					else
 						| Copy of the Police paper
 				input#filePolicia(type='file', name='file')
-				p.help-block Files (.pdf, .jpeg, .png) up to 2MB.
+				p.help-block Files (.pdf, .jpeg, .jpg, .png) up to 2MB.
 			button.btn.btn-default(type='submit') Submit the Police paper
 
 		form.col-md-4(role='form', method='post', enctype='multipart/form-data' action='/dashboard/docs/pago')
@@ -73,7 +73,7 @@ block content
 					else
 						| Proof of payment
 				input#filePago(type='file', name='file')
-				p.help-block Files (.pdf, .jpeg, .png) up to 2MB.
+				p.help-block Files (.pdf, .jpeg, .jpg, .png) up to 2MB.
 			button.btn.btn-default(type='submit') Submit the Payment' proof
 
 	include footer
