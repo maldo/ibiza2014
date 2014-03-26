@@ -52,7 +52,7 @@ _.getAdmin = function (req, res) {
 	//.limit(skipping)
 	//.skip(req.session.skip)
 	.exec(function (err, docs) {
-		res.render('admin', {data: docs});
+		res.render('admin', {data : docs, number : docs.length});
 	});
 };
 
@@ -112,7 +112,7 @@ _.postControl = function (req, res) {
 				msg = 'Error con los datos, revisalos, por favor';
 			}
 			doc.public['error' + control] = msg;
-			sendMail(email, '[ESN IBIZA] Review your files',msg);
+			sendMail(email, '[ESN IBIZA] Review your files', msg);
 		}
 		doc.save(function(err, doc) {
 			return res.redirect('/admin/' + email);
