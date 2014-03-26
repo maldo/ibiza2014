@@ -190,7 +190,9 @@ _.postInfoDocs = function (req, res) {
 
   var ext = path.extname(req.files.file.path);
 
-  if (ext !== '.pdf' && ext !== '.png' && ext !== '.jpg') {
+  ext = ext.toLowerCase();
+
+  if (ext !== '.pdf' && ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg') {
   	req.flash('error', 'File with invalid extension');
   	return res.redirect('/dashboard/info');
   }
