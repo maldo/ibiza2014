@@ -132,21 +132,19 @@ _.getInfo = function (req, res) {
 };
 
 _.postInfo = function (req, res) {
-  req.assert('name', 'Name cannot be blank').notEmpty();
-  req.assert('lastname', 'Last name cannot be blank').notEmpty();
-  req.assert('gender', 'Gender cannot be blank').notEmpty();
-  req.assert('id', 'ID cannot be blank').notEmpty().isAlphanumeric();
-  req.assert('nationality', 'Nationality cannot be blank').notEmpty();
-  req.assert('esncard', 'Esn card cannot be blank').notEmpty().isAlphanumeric();
-  req.assert('gender', 'Gender cannot be blank').notEmpty();
-  req.assert('shirt', 'T-shirt cannot be blank').notEmpty();
-  req.assert('ml', 'ML language cannot be blank').notEmpty();
-  req.assert('telefono', 'ML language cannot be blank').notEmpty();
-  req.assert('uni', 'University cannot be blank').notEmpty();
+  // req.assert('name', 'Name cannot be blank').notEmpty();
+  // req.assert('lastname', 'Last name cannot be blank').notEmpty();
+  // req.assert('gender', 'Gender cannot be blank').notEmpty();
+  // req.assert('id', 'ID cannot be blank').notEmpty().isAlphanumeric();
+  // req.assert('nationality', 'Nationality cannot be blank').notEmpty();
+  // req.assert('esncard', 'Esn card cannot be blank').notEmpty().isAlphanumeric();
+  // req.assert('gender', 'Gender cannot be blank').notEmpty();
+  // req.assert('shirt', 'T-shirt cannot be blank').notEmpty();
+  // req.assert('ml', 'ML language cannot be blank').notEmpty();
+  // req.assert('telefono', 'ML language cannot be blank').notEmpty();
+  // req.assert('uni', 'University cannot be blank').notEmpty();
 
   var errors = req.validationErrors();
-
-  console.log(errors)
 
   if (errors) {
   	req.flash('errors', errors);
@@ -160,16 +158,16 @@ _.postInfo = function (req, res) {
       return res.redirect('/dashboard/info');
     }
     
-    erasmus.public.name = req.body.name;
-    erasmus.public.lastname = req.body.lastname;
-    erasmus.public.id = req.body.id;
-    erasmus.public.nationality = req.body.nationality;
-    erasmus.public.esncard = req.body.esncard;
-    erasmus.public.gender = req.body.gender;
-    erasmus.public.shirt = req.body.shirt;
-    erasmus.public.ml = req.body.ml;
-    erasmus.public.uni = req.body.uni;
-    erasmus.public.telefono = req.body.telefono;
+    erasmus.public.name = req.body.name || erasmus.public.name;
+    erasmus.public.lastname = req.body.lastname || erasmus.public.lastname;
+    erasmus.public.id = req.body.id || erasmus.public.id;
+    erasmus.public.nationality = req.body.nationality || erasmus.public.nationality;
+    erasmus.public.esncard = req.body.esncard || erasmus.public.esncard;
+    erasmus.public.gender = req.body.gender || erasmus.public.gender;
+    erasmus.public.shirt = req.body.shirt || erasmus.public.shirt;
+    erasmus.public.ml = req.body.ml || erasmus.public.ml;
+    erasmus.public.uni = req.body.uni || erasmus.public.uni;
+    erasmus.public.telefono = req.body.telefono || erasmus.public.telefono;
 
     erasmus.save(function (err) {
       if (err) return handleError(err);
