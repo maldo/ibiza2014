@@ -56,6 +56,15 @@ _.getAdmin = function (req, res) {
 	});
 };
 
+_.getTodos = function (req, res) {
+
+	Erasmus.find()
+	.where('public.ok').equals(false)
+	.exec(function (err, docs) {
+		res.send(docs);
+	});
+};
+
 _.getVerificados = function (req, res) {
 
 	Erasmus.find()

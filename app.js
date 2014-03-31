@@ -102,6 +102,7 @@ app.post('/dashboard/docs/:doc', pc.isAuthenticated, multipartMiddleware, erasmu
 app.get('/admin/login', admin.getLogin);
 app.post('/admin/login', admin.postLogin);
 app.get('/admin/estadisticas', admin.isAdmin, admin.getEstadisticas);
+app.get('/admin/todos', admin.isAdmin, admin.getTodos);
 app.get('/admin/verificados', admin.isAdmin, admin.getVerificados);
 app.get('/admin/previous', admin.isAdmin, admin.getAdmin);
 app.get('/admin/next', admin.isAdmin, admin.getAdmin);
