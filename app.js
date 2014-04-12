@@ -101,6 +101,7 @@ app.post('/dashboard/docs/:doc', pc.isAuthenticated, multipartMiddleware, erasmu
 
 app.get('/admin/login', admin.getLogin);
 app.post('/admin/login', admin.postLogin);
+app.get('/admin/numeritos', admin.isAdmin, admin.numeritos);
 app.get('/admin/estadisticas', admin.isAdmin, admin.getEstadisticas);
 app.get('/admin/todos', admin.isAdmin, admin.getTodos);
 app.get('/admin/verificados', admin.isAdmin, admin.getVerificados);
@@ -113,6 +114,8 @@ app.get('/admin/:email', admin.isAdmin, admin.getErasmus);
 app.post('/admin/:email/ok', admin.isAdmin, admin.postTrip);
 app.post('/admin/:email/delete', admin.isAdmin, admin.postDelete);
 app.post('/admin/:email/:control', admin.isAdmin, admin.postControl);
+
+
 
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));

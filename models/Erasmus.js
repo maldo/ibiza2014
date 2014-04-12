@@ -42,7 +42,8 @@ var erasmusSchema = new mongoose.Schema({
     errorPago: { type: String, default: '' },
 
     ok: {type: Boolean, default: false},
-    cancel: {type: Boolean, default: false}
+    cancel: {type: Boolean, default: false},
+    num: {type: Number, default: 0}
   }
 });
 

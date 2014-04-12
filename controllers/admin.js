@@ -1,6 +1,7 @@
 var crypto = require('crypto');
 var rm = require('rimraf');
 var path = require('path');
+var json2csv = require('json2csv');
 
 var Erasmus = require('../models/Erasmus'),
 		mailing = require('../config/mailing'),
@@ -247,4 +248,31 @@ var getListId = function (lang) {
 	} else {
 		return 'b2435a625b';
 	}
+};
+
+_.numeritos = function (req, res) {
+
+	lista = [];
+	n = 1;
+
+	Erasmus.find()
+	.where('public.ok').equals(true)
+	.exec(function (err, docs) {
+
+
+		docs.forEach(function(d){
+			d.public.num = n;
+			n++;
+			lista.push(d.public);
+		});
+
+		json2csv({data: lista, fields: ['num', 'email', 'name', 'lastname', 'id', 'esncard', 'nationality', 'gender', 'shirt', 'uni', 'telefono']}, function(err, csv) {
+		  if (err) console.log(err);
+		  fs.writeFile('file.csv', csv, function(err) {
+		    if (err) throw err;
+		    console.log('file saved');
+		    res.send(lista);
+		  });
+		});
+	});
 };
